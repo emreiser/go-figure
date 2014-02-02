@@ -1,0 +1,8 @@
+<h1>Choose a Category or view a random selection of indicators</h1>
+
+<ul>
+	<% @categories.each do |category| %>
+		<li><%= link_to category.name %></li>
+	<% end %>
+		<li><%= link_to "Select random" %>
+</ul>
