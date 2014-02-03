@@ -6,7 +6,10 @@ class CountriesController < ApplicationController
 		@second = @countries.pop
 	end
 
-	def select_random_pair
+	def show
+		@country = Country.find(params[:id])
+		@categories = Category.all
 	end
+
 
 end

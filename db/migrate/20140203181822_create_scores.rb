@@ -3,7 +3,7 @@ class CreateScores < ActiveRecord::Migration
     create_table :scores do |t|
       t.references :criterion, index: true
       t.references :country, index: true
-      t.decimal :score
+      t.float :score
 
       t.timestamps
     end

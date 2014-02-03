@@ -41,10 +41,19 @@ ActiveRecord::Schema.define(version: 20140203195409) do
 
   add_index "criteria", ["category_id"], name: "index_criteria_on_category_id", using: :btree
 
+  create_table "criterions", force: true do |t|
+    t.integer  "catgories_id"
+    t.text     "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "criterions", ["catgories_id"], name: "index_criterions_on_catgories_id", using: :btree
+
   create_table "scores", force: true do |t|
     t.integer  "criterion_id"
     t.integer  "country_id"
-    t.decimal  "score"
+    t.float    "score"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

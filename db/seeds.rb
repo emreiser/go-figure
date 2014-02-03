@@ -62,7 +62,6 @@ Criterion.create(category: gender_inequality, name: '_2012_gender_inequality_ind
 Criterion.create(category: gender_inequality, name: '_2011_labour_force_participation_rate_female')
 Criterion.create(category: gender_inequality, name: '_2006_2010_population_with_at_least_secondary_education_female')
 
-
 # Seed scores table
 Category.all.each do |category|
 	collection = JSON.parse(HTTParty.get("http://data.undp.org/resource/#{category.url_end}.json").body)
