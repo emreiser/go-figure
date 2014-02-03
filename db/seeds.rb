@@ -10,20 +10,19 @@ health = Category.create(name: 'Health', url_end: '')
 social_integration = Category.create(name: 'Social Integration', url_end: 'n9mf-gwye.json')
 population = Category.create(name: 'Population', url_end: 'e6xu-b22v')
 gender_inequality = Category.create(name: 'Gender Inequality Index', url_end: 'pq34-nwq7')
-poverty = Category.create(name: 'Multidimensional Poverty Index', url_end: '7p2z-5b33')
 
 # Seed countries table with select Countries list
-Country.create(name: 'United States', select: true)
-Country.create(name: 'Cuba', select: true)
-Country.create(name: 'Rwanda', select: true)
-Country.create(name: 'Korea', select: true)
-Country.create(name: 'Saudi Arabia', select: true)
-Country.create(name: 'Mexico', select: true)
-Country.create(name: 'Venezuela', select: true)
-Country.create(name: 'United Arab Emirates', select: true)
-Country.create(name: 'China', select: true)
-Country.create(name: 'Brazil', select: true)
-Country.create(name: 'Kenya', select: true)
+Country.create(name: 'United States', code: 'USA', select: true)
+Country.create(name: 'Cuba', code: 'CUB', select: true)
+Country.create(name: 'Rwanda', code: 'RWA', select: true)
+Country.create(name: 'South Korea', code: 'KOR', select: true)
+Country.create(name: 'Saudi Arabia', code: 'SAU', select: true)
+Country.create(name: 'Mexico', code: 'MEX', select: true)
+Country.create(name: 'Venezuela', code: 'VEN', select: true)
+Country.create(name: 'United Arab Emirates', code: 'ARE', select: true)
+Country.create(name: 'China', code: 'CHN', select: true)
+Country.create(name: 'Brazil', code: 'BRA', select: true)
+Country.create(name: 'Kenya', code: 'KEN', select: true)
 
 # Seed select criteria in criteria table
 #Command over resources
@@ -66,11 +65,23 @@ Criterion.create(category: gender_inequality, name: 'adolescent_fertility_rate')
 Criterion.create(category: gender_inequality, name: '_2012_gender_inequality_index_rank')
 Criterion.create(category: gender_inequality, name: '_2011_labour_force_participation_rate_female')
 Criterion.create(category: gender_inequality, name: '_2006_2010_population_with_at_least_secondary_education_female')
-#Poverty
-Criterion.create(category: poverty, name: 'population_in_multidimensional_poverty' )
-Criterion.create(category: poverty, name: '_2002_2011_population_below_income_poverty_line_national_poverty_line' )
+
 
 # Seed scores table
-Category.all.each do |category|
-	array = JSON.parse(HTTParty.get("http://data.undp.org/resource/#{category.url_end}.json").body)
-end
+# Category.all.each do |category|
+# 	collection = JSON.parse(HTTParty.get("http://data.undp.org/resource/#{category.url_end}.json").body)
+# 	collection.each do |country|
+# 		Score.create(country_id: )
+# 	end
+# end
+
+
+
+
+
+
+
+
+
+
+

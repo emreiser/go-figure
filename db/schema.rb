@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140203181822) do
   create_table "countries", force: true do |t|
     t.text     "name"
     t.integer  "hdi_rank"
+    t.text     "code"
     t.boolean  "select"
     t.datetime "created_at"
     t.datetime "updated_at"
