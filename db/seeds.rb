@@ -6,8 +6,8 @@ environment = Category.create(name: 'Environment', url_end: 'ki8j-r4i6')
 capital_flows = Category.create(name: 'International Capital Flows and Migrations', url_end: '3esk-n839')
 trade_flows = Category.create(name: 'International Trade Flows of Goods and Services', url_end: 'itri-v7qr')
 education = Category.create(name: 'Education', url_end: 'mvtz-nsye')
-health = Category.create(name: 'Health', url_end: '')
-social_integration = Category.create(name: 'Social Integration', url_end: 'n9mf-gwye.json')
+# health = Category.create(name: 'Health', url_end: '')
+# social_integration = Category.create(name: 'Social Integration', url_end: 'n9mf-gwye.json')
 population = Category.create(name: 'Population', url_end: 'e6xu-b22v')
 gender_inequality = Category.create(name: 'Gender Inequality Index', url_end: 'pq34-nwq7')
 
@@ -53,8 +53,8 @@ Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_
 #Health !!!!!!!!!!!!!
 
 #Social Integration
-Criterion.create(category: social_integration, name: '_2007_2011_overall_life_satisfaction')
-Criterion.create(category: social_integration, name: '_2005_2011_youth_unemployment')
+# Criterion.create(category: social_integration, name: '_2007_2011_overall_life_satisfaction')
+# Criterion.create(category: social_integration, name: '_2005_2011_youth_unemployment')
 #Population
 Criterion.create(category: population, name: '_2012_urban_population')
 Criterion.create(category: population, name: '_2000_2005_annual_population_growth')
@@ -68,20 +68,18 @@ Criterion.create(category: gender_inequality, name: '_2006_2010_population_with_
 
 
 # Seed scores table
-# Category.all.each do |category|
-# 	collection = JSON.parse(HTTParty.get("http://data.undp.org/resource/#{category.url_end}.json").body)
-# 	collection.each do |country|
-# 		Score.create(country_id: )
-# 	end
-# end
+Category.all.each do |category|
+	collection = JSON.parse(HTTParty.get("http://data.undp.org/resource/#{category.url_end}.json").body)
 
-
-
-
-
-
-
-
-
-
-
+	collection.each do |entry|
+		if entry['type'] == 'Ranked Country'
+			criteria = Criterion.where(category_id: category.id)
+			criteria.each do |criterion|
+				country = Country.find_by(code: entry['country_code'])
+				if country.present?
+					Score.create(country_id: country.id, criterion_id: criterion.id, score: entry[criterion.name])
+				end
+			end
+		end
+	end
+end
