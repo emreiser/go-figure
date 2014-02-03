@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 gem 'json'
 gem 'bootstrap-sass', '~> 3.1.0'
+gem 'httparty'
 
 # Use postgresql as the database for Active Record
 gem 'pg'

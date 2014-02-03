@@ -12,7 +12,7 @@ Category.create(name: 'Population', url_end: 'e6xu-b22v')
 Category.create(name: 'Gender Inequality Index', url_end: 'pq34-nwq7')
 Category.create(name: 'Multidimensional Poverty Index', url_end: '7p2z-5b33')
 
-# Seed with select Countries list
+# Seed countries table with select Countries list
 Country.create(name: 'United States', select: true)
 Country.create(name: 'Cuba', select: true)
 Country.create(name: 'Rwanda', select: true)
@@ -25,8 +25,10 @@ Country.create(name: 'China', select: true)
 Country.create(name: 'Brazil', select: true)
 Country.create(name: 'Kenya', select: true)
 
+# Seed criteria table
 
 
-
-
-
+# Seed scores table
+# Category.all.each do |category|
+# 	array = JSON.parse(HTTParty.get("http://data.undp.org/resource/#{category.url_end}.json").body)
+# end
