@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203163921) do
+ActiveRecord::Schema.define(version: 20140203181822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,5 +39,16 @@ ActiveRecord::Schema.define(version: 20140203163921) do
   end
 
   add_index "criteria", ["category_id"], name: "index_criteria_on_category_id", using: :btree
+
+  create_table "scores", force: true do |t|
+    t.integer  "criterion_id"
+    t.integer  "country_id"
+    t.decimal  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scores", ["country_id"], name: "index_scores_on_country_id", using: :btree
+  add_index "scores", ["criterion_id"], name: "index_scores_on_criterion_id", using: :btree
 
 end

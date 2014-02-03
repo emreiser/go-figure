@@ -71,6 +71,6 @@ Criterion.create(category: poverty, name: 'population_in_multidimensional_povert
 Criterion.create(category: poverty, name: '_2002_2011_population_below_income_poverty_line_national_poverty_line' )
 
 # Seed scores table
-# Category.all.each do |category|
-# 	array = JSON.parse(HTTParty.get("http://data.undp.org/resource/#{category.url_end}.json").body)
-# end
+Category.all.each do |category|
+	array = JSON.parse(HTTParty.get("http://data.undp.org/resource/#{category.url_end}.json").body)
+end
