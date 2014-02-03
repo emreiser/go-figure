@@ -1,3 +1,3 @@
 class Criterion < ActiveRecord::Base
-  belongs_to :catgories
+  belongs_to :category
 end
