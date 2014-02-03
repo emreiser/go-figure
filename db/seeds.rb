@@ -7,7 +7,6 @@ capital_flows = Category.create(name: 'International Capital Flows and Migration
 trade_flows = Category.create(name: 'International Trade Flows of Goods and Services', url_end: 'itri-v7qr')
 education = Category.create(name: 'Education', url_end: 'mvtz-nsye')
 # health = Category.create(name: 'Health', url_end: '')
-# social_integration = Category.create(name: 'Social Integration', url_end: 'n9mf-gwye.json')
 population = Category.create(name: 'Population', url_end: 'e6xu-b22v')
 gender_inequality = Category.create(name: 'Gender Inequality Index', url_end: 'pq34-nwq7')
 
@@ -52,9 +51,6 @@ Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_
 
 #Health !!!!!!!!!!!!!
 
-#Social Integration
-# Criterion.create(category: social_integration, name: '_2007_2011_overall_life_satisfaction')
-# Criterion.create(category: social_integration, name: '_2005_2011_youth_unemployment')
 #Population
 Criterion.create(category: population, name: '_2012_urban_population')
 Criterion.create(category: population, name: '_2000_2005_annual_population_growth')
