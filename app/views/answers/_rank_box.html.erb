@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+  	<h3>Your countries' position overall</h3>
+  </div>
+
+  	<ul>
+	    <% @highlighted_countries.each do |country_id| %>
+	    	<div class="panel highlight">
+		    	<li>
+		    		<ul>
+		    		<h4>
+		    			<li><%= (@ordered_countries.index(country_id) + 1) %></li>
+		    			<li><%= Country.find(country_id).name %></li>
+		    		</h4>
+		    		</ul>
+		    	</li>
+	    	</div>
+	    <% end %>
+
+    </ul>
+</div>

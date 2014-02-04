@@ -1,16 +1,16 @@
 @import "bootstrap";
 ol {
-	list-style-position: inside;
+	list-style: decimal inside;
 }
 
-h1 {
-	margin-bottom: 20px;
+.alert {
+	text-align: center;
 }
 
 .main {
 	text-align: center;
 	margin: 0 auto;
-	width: 70%;
+	width: 85%;
 }
 
 .right {
@@ -28,15 +28,13 @@ h1 {
 .panel {
 	margin: 5px 5px;
 	padding: 5px 5px;
-	font-size: 60%;
 }
 
 .line_up {
 	text-align: left;
-	width: 70%;
 }
 
-.line_up ul li {
+ul li {
 	list-style-type: none;
 	display: inline-block;
 }
@@ -47,7 +45,7 @@ h1 {
 
 .highlight {
 	background: #A2B5CD;
-	font-size: 100%;
+	font-size: 110%;
 }
 
 

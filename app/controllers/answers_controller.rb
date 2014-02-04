@@ -15,6 +15,11 @@ class AnswersController < ApplicationController
 		end
 
 		if @answer.save
+			if @answer[:correct] == true
+				flash[:notice] = "That's right!"
+			else
+				flash.now[:error] = 'Not so much.'
+			end
 			redirect_to @answer
 		else
 		end
@@ -46,13 +51,13 @@ class AnswersController < ApplicationController
 		@highlighted_countries = []
 		@highlighted_countries << @answer.country_1_id << @answer.country_2_id << Country.find_by(name: 'United States').id
 
-		@ordered_scores = Score.where(criterion_id: @answer.criterion.id).where.not(score: nil)
+		@ordered_scores = Score.where(criterion_id: @answer.criterion.id).where.not(score: nil).order(score: :desc)
 
-		if @answer.criterion.higher_good == true
-			@ordered_scores.order!(score: :desc)
-		else
-			@ordered_scores.order!(score: :asc)
+		@ordered_countries = []
+		@ordered_scores.each do |score|
+			@ordered_countries << score.country.id
 		end
+
 	end
 
 

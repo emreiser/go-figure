@@ -6,6 +6,14 @@
 		<h1>The line up for <%= @answer.criterion.display_name %></h1>
 	</div>
 
-	<%= render partial: 'country_list' %>
+<div class='row'>
+	<div class='col-md-7 col-sm-7'>
+		<%= render partial: 'country_list' %>
+	</div>
+	<div class='col-md-5 col-sm-5'>
+		<%= render partial: 'rank_box' %>
+	</div>
+</div>
+
 
 </div>

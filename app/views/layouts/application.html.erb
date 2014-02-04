@@ -9,7 +9,7 @@
 	<body>
 		<div class='container'>
 
-		<div>
+		<div id='sign-in'>
 			<h5>
 				<% if user_signed_in? %>
 					<%= current_user.email %> | <%= link_to 'Sign out', destroy_user_session_path, method: 'delete' %>
@@ -20,8 +20,11 @@
 		</div>
 
 		<div>
-			<p class="notice"><%= notice %></p>
-			<p class="alert"><%= alert %></p>
+			<% if flash[:notice].present? %>
+				<p class="alert alert-success"><%= notice %></p>
+			<% elsif flash[:error].present? %>
+				<p class="alert alert-danger"><%= alert %></p>
+			<% end %>
 		</div>
 
 		<%= yield %>
