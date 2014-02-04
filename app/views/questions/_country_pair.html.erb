@@ -5,6 +5,6 @@
 	<%= f.hidden_field :country_1_id, value: @country_1.id %>
 	<%= f.hidden_field :country_2_id, value: @country_2.id %>
 	<%= f.hidden_field :criterion_id, value: @criterion.id %>
-	<%= f.submit name: 'commit', value: @country_1.name %>
-	<%= f.submit  name: 'commit', value: @country_2.name %>
+	<%= f.submit name: 'commit', value: @country_1.name, class: "btn btn-primary btn-lg" %>
+	<%= f.submit  name: 'commit', value: @country_2.name, class: "btn btn-primary btn-lg"  %>
 <% end %>

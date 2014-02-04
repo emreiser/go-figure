@@ -29,7 +29,16 @@ class AnswersController < ApplicationController
 		else
 			answer[:country_2_id]
 		end
+	end
 
+	def get_positive_field(answer)
+		if answer[:correct] == false
+			if answer.criterion.higher_good == true
+				false
+			else
+				true
+			end
+		end
 	end
 
 

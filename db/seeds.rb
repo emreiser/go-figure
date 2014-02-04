@@ -25,7 +25,7 @@ korea.save!
 
 venezuela = Country.find_by(name: "Venezuela (Bolivarian Republic of)")
 venezuela.name = "Venezuela"
-venezuela.save!
+venezuela.save
 
 #Set selected countries
 selected_countries = [
@@ -43,9 +43,9 @@ selected_countries = [
 ]
 
 selected_countries.each do |name|
-	puts name
 	country = Country.find_by(name: name)
 	country.select = true
+	country.save
 end
 
 # Seed select criteria in criteria table
