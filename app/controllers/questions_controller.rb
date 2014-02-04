@@ -1,13 +1,13 @@
 class QuestionsController < ApplicationController
 
 	def index
-		@countries = Country.all.shuffle
-		@country_1 = @countries.first
-		@country_2 = @countries.last
+		@criterion = Criterion.all.shuffle.sample
+		@valid_scores = Score.where(criterion_id: @criterion.id).where.not(score: nil).shuffle
+
+		@country_1 = Country.find(@valid_scores.first.country_id)
+		@country_2 = Country.find(@valid_scores.last.country_id)
 
 		@answer = Answer.new
-
-		@criterion = Criterion.all.shuffle.sample
 		@question = "Which country do you think had higher #{@criterion.name}?"
 	end
 
