@@ -1,6 +1,7 @@
 class CreateAnswers < ActiveRecord::Migration
   def change
     create_table :answers do |t|
+      t.references :user
       t.integer :country_1_id
       t.integer :country_2_id
       t.references :criterion

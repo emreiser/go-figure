@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20140203224136) do
   enable_extension "plpgsql"
 
   create_table "answers", force: true do |t|
+    t.integer  "user_id"
     t.integer  "country_1_id"
     t.integer  "country_2_id"
     t.integer  "criterion_id"

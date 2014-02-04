@@ -2,6 +2,9 @@
 <h1><%= @question %></h1>
 
 <%= form_for @answer do |f| %>
+	<% if user_signed_in? %>
+		<%= f.hidden_field :user_id, value: current_user.id %>
+	<% end %>
 	<%= f.hidden_field :country_1_id, value: @country_1.id %>
 	<%= f.hidden_field :country_2_id, value: @country_2.id %>
 	<%= f.hidden_field :criterion_id, value: @criterion.id %>

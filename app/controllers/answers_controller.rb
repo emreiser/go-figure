@@ -35,7 +35,7 @@ class AnswersController < ApplicationController
 
 	private
 	def answer_params
-		params.require(:answer).permit(:country_1_id, :country_2_id, :criterion_id, :selected_country_id, :positive)
+		params.require(:answer).permit(:user_id, :country_1_id, :country_2_id, :criterion_id, :selected_country_id, :positive)
 	end
 
 end
