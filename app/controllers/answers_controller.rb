@@ -15,7 +15,7 @@ class AnswersController < ApplicationController
 		end
 
 		if @answer.save
-			redirect_to questions_path
+			redirect_to @answer
 		else
 		end
 	end
@@ -38,6 +38,20 @@ class AnswersController < ApplicationController
 			else
 				true
 			end
+		end
+	end
+
+	def show
+		@answer = Answer.find(params[:id])
+		@highlighted_countries = []
+		@highlighted_countries << @answer.country_1_id << @answer.country_2_id << Country.find_by(name: 'United States').id
+
+		@ordered_scores = Score.where(criterion_id: @answer.criterion.id).where.not(score: nil)
+
+		if @answer.criterion.higher_good == true
+			@ordered_scores.order!(score: :desc)
+		else
+			@ordered_scores.order!(score: :asc)
 		end
 	end
 

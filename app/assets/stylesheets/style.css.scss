@@ -1,9 +1,20 @@
 @import "bootstrap";
+ol {
+	list-style-position: inside;
+}
 
-.prompt {
+h1 {
+	margin-bottom: 20px;
+}
+
+.main {
 	text-align: center;
 	margin: 0 auto;
 	width: 70%;
+}
+
+.right {
+	text-align: right;
 }
 
 .question {
@@ -13,3 +24,30 @@
 .btn {
 	margin: 5px 5px;
 }
+
+.panel {
+	margin: 5px 5px;
+	padding: 5px 5px;
+	font-size: 60%;
+}
+
+.line_up {
+	text-align: left;
+	width: 70%;
+}
+
+.line_up ul li {
+	list-style-type: none;
+	display: inline-block;
+}
+
+.line_up ul li:first-child {
+	width: 65%;
+}
+
+.highlight {
+	background: #A2B5CD;
+	font-size: 100%;
+}
+
+

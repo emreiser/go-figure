@@ -1,0 +1,19 @@
+<div class='line_up'>
+	<ol>
+		<% @ordered_scores.each do |score| %>
+			<% if @highlighted_countries.include? score.country.id %>
+				<div class='panel highlight'>
+			<% else %>
+				<div class='panel'>
+			<% end %>
+					<li>
+						<ul>
+							<li><%= score.country.name %></li>
+							<li><%= score.score %></li>
+						</ul>
+					</li>
+				</div>
+		<% end %>
+
+	</ol>
+</div>

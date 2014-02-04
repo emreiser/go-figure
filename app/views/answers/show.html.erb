@@ -1,0 +1,11 @@
+<div class='right'>
+	<%= link_to 'Play next question', questions_path, class: "btn btn-primary" %>
+</div>
+<div class='main'>
+	<div class='question'>
+		<h1>The line up for <%= @answer.criterion.display_name %></h1>
+	</div>
+
+	<%= render partial: 'country_list' %>
+
+</div>
