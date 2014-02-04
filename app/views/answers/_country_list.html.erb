@@ -2,7 +2,7 @@
 	<div class='line_up'>
 		<ol>
 			<% @ordered_scores.each do |score| %>
-				<% if @highlighted_countries.include? score.country.id %>
+				<% if @highlighted_countries.include? score.country %>
 					<div class='panel highlight'>
 				<% else %>
 					<div class='panel'>

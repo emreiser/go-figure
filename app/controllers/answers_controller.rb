@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
 	end
 
 	def create
-		@answer = Answer.create(answer_params)
+		@answer = Answer.new(answer_params)
 		@answer[:selected_country_id] = Country.find_by(name: params[:commit]).id
 
 		if @answer[:selected_country_id] == get_correct_country(@answer)
@@ -18,10 +18,9 @@ class AnswersController < ApplicationController
 			if @answer[:correct] == true
 				flash[:notice] = "That's right!"
 			else
-				flash.now[:error] = 'Not so much.'
+				flash[:warning] = "Not so much."
 			end
 			redirect_to @answer
-		else
 		end
 	end
 
@@ -49,15 +48,23 @@ class AnswersController < ApplicationController
 	def show
 		@answer = Answer.find(params[:id])
 		@highlighted_countries = []
-		@highlighted_countries << @answer.country_1_id << @answer.country_2_id << Country.find_by(name: 'United States').id
-
-		@ordered_scores = Score.where(criterion_id: @answer.criterion.id).where.not(score: nil).order(score: :desc)
-
-		@ordered_countries = []
-		@ordered_scores.each do |score|
-			@ordered_countries << score.country.id
+		@highlighted_countries << @answer.country_1 << @answer.country_2
+		if @highlighted_countries.include? Country.find_by(name: 'United States')
+			@highlighted_countries << Country.find_by(name: 'Canada')
+		else
+			@highlighted_countries << Country.find_by(name: 'United States')
 		end
 
+		@ordered_scores = @answer.criterion.scores.valid_scores.order(score: :desc)
+
+		@ordered_countries = @highlighted_countries.map do |country|
+			{
+				rank: @ordered_scores.index {|x| x.country_id == country.id } + 1,
+				country_name: country.name
+			}
+		end
+
+		@ordered_countries.sort! {|x, y| x[:rank] <=> y[:rank] }
 	end
 
 

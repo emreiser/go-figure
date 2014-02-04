@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	  <title>Project1</title>
+	  <title>BiUS</title>
 	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	  <%= csrf_meta_tags %>
@@ -17,14 +17,6 @@
 					<%= link_to "Sign in", new_user_session_path %>
 				<% end %>
 			</h5>
-		</div>
-
-		<div>
-			<% if flash[:notice].present? %>
-				<p class="alert alert-success"><%= notice %></p>
-			<% elsif flash[:error].present? %>
-				<p class="alert alert-danger"><%= alert %></p>
-			<% end %>
 		</div>
 
 		<%= yield %>

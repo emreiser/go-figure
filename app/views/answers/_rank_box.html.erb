@@ -1,16 +1,17 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-  	<h3>Your countries' position overall</h3>
+  	<h3>Overall Country Positions</h3>
   </div>
 
   	<ul>
-	    <% @highlighted_countries.each do |country_id| %>
+	    <% @ordered_countries.each do |country_hash| %>
 	    	<div class="panel highlight">
 		    	<li>
 		    		<ul>
 		    		<h4>
-		    			<li><%= (@ordered_countries.index(country_id) + 1) %></li>
-		    			<li><%= Country.find(country_id).name %></li>
+		    			<li><span class="list_rank"><%= country_hash[:rank] %>. </span>
+		    					<span class="country_name"><%= country_hash[:country_name] %></span>
+		    			</li>
 		    		</h4>
 		    		</ul>
 		    	</li>

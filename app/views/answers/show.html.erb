@@ -3,8 +3,16 @@
 </div>
 <div class='main'>
 	<div class='question'>
-		<h1>The line up for <%= @answer.criterion.display_name %></h1>
+		<h1>The line up for:<br>
+		<%= @answer.criterion.display_name.titlecase %></h1>
 	</div>
+		<div>
+			<% if flash[:notice].present? %>
+				<p class="alert alert-success"><%= flash[:notice] %></p>
+			<% elsif flash[:warning].present? %>
+				<p class="alert alert-danger"><%= flash[:warning] %></p>
+			<% end %>
+		</div>
 
 <div class='row'>
 	<div class='col-md-7 col-sm-7'>
