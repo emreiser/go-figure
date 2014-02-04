@@ -6,60 +6,79 @@ environment = Category.create(name: 'Environment', url_end: 'ki8j-r4i6')
 capital_flows = Category.create(name: 'International Capital Flows and Migrations', url_end: '3esk-n839')
 trade_flows = Category.create(name: 'International Trade Flows of Goods and Services', url_end: 'itri-v7qr')
 education = Category.create(name: 'Education', url_end: 'mvtz-nsye')
-# health = Category.create(name: 'Health', url_end: '')
+health = Category.create(name: 'Health', url_end: 'iv8b-7gbj')
 population = Category.create(name: 'Population', url_end: 'e6xu-b22v')
 gender_inequality = Category.create(name: 'Gender Inequality Index', url_end: 'pq34-nwq7')
 
-# Seed countries table with select Countries list
-Country.create(name: 'United States', code: 'USA', select: true)
-Country.create(name: 'Cuba', code: 'CUB', select: true)
-Country.create(name: 'Rwanda', code: 'RWA', select: true)
-Country.create(name: 'South Korea', code: 'KOR', select: true)
-Country.create(name: 'Saudi Arabia', code: 'SAU', select: true)
-Country.create(name: 'Mexico', code: 'MEX', select: true)
-Country.create(name: 'Venezuela', code: 'VEN', select: true)
-Country.create(name: 'United Arab Emirates', code: 'ARE', select: true)
-Country.create(name: 'China', code: 'CHN', select: true)
-Country.create(name: 'Brazil', code: 'BRA', select: true)
-Country.create(name: 'Kenya', code: 'KEN', select: true)
+#Seed all countries
+entries = JSON.parse(HTTParty.get("http://data.undp.org/resource/9jnv-7hyp.json").body)
+entries.each do |entry|
+	if entry['type'] == 'Ranked Country'
+		Country.create(name: entry['name'], code: entry['country_code'], hdi_rank: entry['_2012_hdi_rank'])
+	end
+end
+
+#Change name of South Korea & Venezuela
+korea = Country.find_by(name: "Korea (Republic of)")
+korea.name = "South Korea"
+korea.save!
+
+venezuela = Country.find_by(name: "Venezuela (Bolivarian Republic of)")
+venezuela.name = "Venezuela"
+venezuela.save!
+
+#Set selected countries
+selected_countries = [
+	'United States',
+	'Cuba',
+	'Rwanda',
+	'South Korea',
+	'Saudi Arabia',
+	'Mexico',
+	'Venezuela',
+	'United Arab Emirates',
+	'China',
+	'Brazil',
+	'Kenya'
+]
+
+selected_countries.each do |name|
+	puts name
+	country = Country.find_by(name: name)
+	country.select = true
+end
 
 # Seed select criteria in criteria table
 #Command over resources
-Criterion.create(category: command_over_resources, name: '_2010_health_of_gdp' )
-Criterion.create(category: command_over_resources, name: '_2010_military_of_gdp' )
-Criterion.create(category: command_over_resources, name: '_2005_2010_education_of_gdp' )
+Criterion.create(category: command_over_resources, name: '_2010_health_of_gdp', display_name: 'percent of GDP spent on health in 2010', higher_good: true)
+Criterion.create(category: command_over_resources, name: '_2010_military_of_gdp', display_name: 'percent of GDP spent on military in 2010', higher_good: false )
+Criterion.create(category: command_over_resources, name: '_2005_2010_education_of_gdp', display_name: 'percent of GDP spent on education in 2010', higher_good: true )
 #Innovation & tech
-Criterion.create(category: innovation_technologoy, name: '_2010_fixed_and_mobile_telephone_subscribers')
-Criterion.create(category: innovation_technologoy, name: '_2005_2010_research_and_development_expenditure')
-Criterion.create(category: innovation_technologoy, name: '_2002_2011_graduates_in_science_and_engineering')
-Criterion.create(category: innovation_technologoy, name: '_2010_internet_users')
+Criterion.create(category: innovation_technologoy, name: '_2010_fixed_and_mobile_telephone_subscribers', display_name: 'number of fixed and mobile telephone subscribers in 2010', higher_good: true)
+Criterion.create(category: innovation_technologoy, name: '_2005_2010_research_and_development_expenditure', display_name: 'research and development expenditure in 2005-2010', higher_good: true)
+Criterion.create(category: innovation_technologoy, name: '_2002_2011_graduates_in_science_and_engineering', display_name: 'percent of graduates in science and engineering in 2002-2011', higher_good: true)
+Criterion.create(category: innovation_technologoy, name: '_2010_internet_users', display_name: 'percent of internet users in 2010', higher_good: true)
 #Environment
-Criterion.create(category: environment, name: '_2009_renewable_energy_usage')
-Criterion.create(category: environment, name: '_2009_agricultural_land')
-Criterion.create(category: environment, name: '_2008_carbon_dioxide_emissions')
+Criterion.create(category: environment, name: '_2009_renewable_energy_usage', display_name: 'renewable energy usage 2009', higher_good: true)
+Criterion.create(category: environment, name: '_2009_agricultural_land', display_name: 'percent of agricultural land in 2009', higher_good: true)
+Criterion.create(category: environment, name: '_2008_carbon_dioxide_emissions', display_name: 'carbon dioxide emissions in 2008', higher_good: false)
 #International Capital Flows and Migrations
-Criterion.create(category: capital_flows, name: '_2010_international_inbound_tourism')
-Criterion.create(category: capital_flows, name: '_2010_net_official_development_assistance_received')
-Criterion.create(category: capital_flows, name: '_2010_inflow_remittances')
-#International Trade Flows of Goods and Services
-Criterion.create(category: trade_flows, name: '_2010_exports_of_merchandise_goods_billions')
-Criterion.create(category: trade_flows, name: '_2010_agricultural_share_of_imports')
+Criterion.create(category: capital_flows, name: '_2010_international_inbound_tourism', display_name: 'rate of international inbound tourism in 2010', higher_good: true)
+Criterion.create(category: capital_flows, name: '_2010_net_official_development_assistance_received', display_name: 'net official development assistance received in 2010', higher_good: false)
 #Education
-Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_secondary')
-Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_tertiary')
-
-#Health !!!!!!!!!!!!!
-
+Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_secondary', display_name: 'percent enrollment in secondary school in 2002-2011', higher_good: true)
+Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_tertiary', display_name: 'percent enrollment in college in 2002-2011', higher_good: true)
+#Health
+Criterion.create(category: health, name: '_2007_2009_satisfaction_with_health_care_quality', display_name: 'satisfaction with health care quality in 2007-2009', higher_good: true)
 #Population
-Criterion.create(category: population, name: '_2012_urban_population')
-Criterion.create(category: population, name: '_2000_2005_annual_population_growth')
+Criterion.create(category: population, name: '_2012_urban_population', display_name: 'percent of population in urban areas in 2012')
+Criterion.create(category: population, name: '_2000_2005_annual_population_growth', display_name: 'annual population growth in 2000-2005')
 #Gender Inequality
-Criterion.create(category: gender_inequality, name: '_2012_seats_in_national_parliament_female' )
-Criterion.create(category: gender_inequality, name: '_2010_maternal_mortality_ratio')
-Criterion.create(category: gender_inequality, name: 'adolescent_fertility_rate')
-Criterion.create(category: gender_inequality, name: '_2012_gender_inequality_index_rank')
-Criterion.create(category: gender_inequality, name: '_2011_labour_force_participation_rate_female')
-Criterion.create(category: gender_inequality, name: '_2006_2010_population_with_at_least_secondary_education_female')
+Criterion.create(category: gender_inequality, name: '_2012_seats_in_national_parliament_female', display_name: 'percentage of seats in parliament held by women in 2012', higher_good: true)
+Criterion.create(category: gender_inequality, name: '_2010_maternal_mortality_ratio', display_name: 'maternal mortality ratio in 2011', higher_good: false)
+Criterion.create(category: gender_inequality, name: 'adolescent_fertility_rate', display_name: 'adolescent fertility rate', higher_good: false)
+Criterion.create(category: gender_inequality, name: '_2012_gender_inequality_index_rank', display_name: 'gender equality index rank', higher_good: true)
+Criterion.create(category: gender_inequality, name: '_2006_2010_population_with_at_least_secondary_education_female', display_name: 'percent of female population with at least secondary education in 2006-2010', higher_good: true)
 
 # Seed scores table
 Category.all.each do |category|

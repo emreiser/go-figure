@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140203224136) do
   create_table "criteria", force: true do |t|
     t.integer  "category_id"
     t.text     "name"
+    t.text     "display_name"
     t.boolean  "higher_good"
     t.datetime "created_at"
     t.datetime "updated_at"
