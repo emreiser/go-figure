@@ -19,6 +19,7 @@ class AnswersController < ApplicationController
 				flash[:notice] = "That's right!"
 			else
 				flash[:warning] = "Not so much."
+				add_bias_points(@answer)
 			end
 			redirect_to @answer
 		end
@@ -71,6 +72,31 @@ class AnswersController < ApplicationController
 	private
 	def answer_params
 		params.require(:answer).permit(:user_id, :country_1_id, :country_2_id, :criterion_id, :selected_country_id, :positive)
+	end
+
+	def add_bias_points(answer)
+
+		first_country_point = BiasPoint.new(answer_id: answer.id, country_id: answer.selected_country_id)
+		if answer.criterion.higher_good == true
+			first_country_point[:positive] = true
+		else
+			first_country_point[:positive] = false
+		end
+
+		second_country_point = BiasPoint.new(answer_id: answer.id)
+		if answer.selected_country_id == answer.country_1_id
+			second_country_point[:country_id] = answer.country_2_id
+		else
+			second_country_point[:country_id] = answer.country_1_id
+		end
+		if answer.criterion.higher_good == true
+			second_country_point[:positive] = false
+		else
+			second_country_point[:positive] = true
+		end
+
+		first_country_point.save!
+		second_country_point.save!
 	end
 
 end

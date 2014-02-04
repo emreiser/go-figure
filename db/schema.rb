@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203224136) do
+ActiveRecord::Schema.define(version: 20140204220715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20140203224136) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "bias_points", force: true do |t|
+    t.integer  "answer_id"
+    t.integer  "country_id"
+    t.boolean  "positive"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bias_points", ["answer_id"], name: "index_bias_points_on_answer_id", using: :btree
+  add_index "bias_points", ["country_id"], name: "index_bias_points_on_country_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.text     "name"
