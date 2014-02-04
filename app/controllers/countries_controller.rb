@@ -1,9 +1,7 @@
 class CountriesController < ApplicationController
 
 	def index
-		@countries = Country.all.shuffle
-		@first = @countries.pop
-		@second = @countries.pop
+		@answer = Answer.new
 	end
 
 	def show

@@ -1,0 +1,10 @@
+<h1>Get started</h1>
+<h1><%= @question %></h1>
+
+<%= form_for @answer do |f| %>
+	<%= f.hidden_field :country_1_id, value: @country_1.id %>
+	<%= f.hidden_field :country_2_id, value: @country_2.id %>
+	<%= f.hidden_field :criterion_id, value: @criterion.id %>
+	<%= f.submit name: 'commit', value: @country_1.name %>
+	<%= f.submit  name: 'commit', value: @country_2.name %>
+<% end %>

@@ -42,7 +42,6 @@ Criterion.create(category: capital_flows, name: '_2010_international_inbound_tou
 Criterion.create(category: capital_flows, name: '_2010_net_official_development_assistance_received')
 Criterion.create(category: capital_flows, name: '_2010_inflow_remittances')
 #International Trade Flows of Goods and Services
-Criterion.create(category: trade_flows, name: '_2010_imports_of_merchandise_goods_billions')
 Criterion.create(category: trade_flows, name: '_2010_exports_of_merchandise_goods_billions')
 Criterion.create(category: trade_flows, name: '_2010_agricultural_share_of_imports')
 #Education
