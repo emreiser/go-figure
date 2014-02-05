@@ -27,6 +27,10 @@ venezuela = Country.find_by(name: "Venezuela (Bolivarian Republic of)")
 venezuela.name = "Venezuela"
 venezuela.save
 
+russia = Country.find_by(name: "Russian Federation")
+russia.name = "Russia"
+russia.save
+
 #Set selected countries
 selected_countries = [
 	'United States',
@@ -39,7 +43,9 @@ selected_countries = [
 	'United Arab Emirates',
 	'China',
 	'Brazil',
-	'Kenya'
+	'Kenya',
+	'Russia',
+	'India'
 ]
 
 selected_countries.each do |name|
@@ -62,9 +68,6 @@ Criterion.create(category: innovation_technologoy, name: '_2010_internet_users',
 Criterion.create(category: environment, name: '_2009_renewable_energy_usage', display_name: 'renewable energy usage 2009', higher_good: true)
 Criterion.create(category: environment, name: '_2009_agricultural_land', display_name: 'percent of agricultural land in 2009', higher_good: true)
 Criterion.create(category: environment, name: '_2008_carbon_dioxide_emissions', display_name: 'carbon dioxide emissions in 2008', higher_good: false)
-#International Capital Flows and Migrations
-Criterion.create(category: capital_flows, name: '_2010_international_inbound_tourism', display_name: 'rate of international inbound tourism in 2010', higher_good: true)
-Criterion.create(category: capital_flows, name: '_2010_net_official_development_assistance_received', display_name: 'net official development assistance received in 2010', higher_good: false)
 #Education
 Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_secondary', display_name: 'percent enrollment in secondary school in 2002-2011', higher_good: true)
 Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_tertiary', display_name: 'percent enrollment in college in 2002-2011', higher_good: true)
@@ -75,7 +78,6 @@ Criterion.create(category: population, name: '_2012_urban_population', display_n
 Criterion.create(category: population, name: '_2000_2005_annual_population_growth', display_name: 'annual population growth in 2000-2005')
 #Gender Inequality
 Criterion.create(category: gender_inequality, name: '_2012_seats_in_national_parliament_female', display_name: 'percentage of seats in parliament held by women in 2012', higher_good: true)
-Criterion.create(category: gender_inequality, name: '_2010_maternal_mortality_ratio', display_name: 'maternal mortality ratio in 2011', higher_good: false)
 Criterion.create(category: gender_inequality, name: 'adolescent_fertility_rate', display_name: 'adolescent fertility rate', higher_good: false)
 Criterion.create(category: gender_inequality, name: '_2012_gender_inequality_index_rank', display_name: 'gender equality index rank', higher_good: true)
 Criterion.create(category: gender_inequality, name: '_2006_2010_population_with_at_least_secondary_education_female', display_name: 'percent of female population with at least secondary education in 2006-2010', higher_good: true)

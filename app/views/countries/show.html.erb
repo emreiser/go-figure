@@ -1,15 +1,11 @@
 <h1>Breakdown for <%= @country.name %></h1>
 
-<ul>
-	<% @categories.each do |category| %>
-		<% criteria = Criterion.where(category_id: category.id) %>
-		<li><%= category.name %>
-			<ul>
-			<% criteria.each do |criterion| %>
+<div class='bias panel panel-default'>
+	<h4>Aggregate positive bias points: <%= @positive_bias_points %></h4>
+	<h4>Aggregate negative bias points: <%= @negative_bias_points %></h4>
+</div>
 
-				<li><%= criterion.name %>: <%= Score.where(country_id: @country.id, criterion_id: criterion.id).first.score %></li>
-			<% end %>
-			</ul>
-		</li>
-	<% end %>
-</ul>
+<div>
+<%= render partial: 'criteria_breakdown' %>
+</div>
+

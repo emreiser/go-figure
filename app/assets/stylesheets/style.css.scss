@@ -17,6 +17,18 @@ ol {
 	text-align: right;
 }
 
+table {
+	width: 80%;
+}
+
+td {
+	border-bottom: 1px solid #dddddd;
+}
+
+td:first-child {
+	width: 90%;
+}
+
 .question {
 	margin: 0 auto 40px auto;
 	width: 80%;
@@ -47,6 +59,10 @@ ul li {
 .highlight {
 	background: #A2B5CD;
 	font-size: 110%;
+}
+
+.bias {
+	text-align: right;
 }
 
 

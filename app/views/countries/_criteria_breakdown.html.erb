@@ -1,0 +1,18 @@
+<% @categories.each do |category| %>
+	<% criteria = category.criteria %>
+	<div class="panel panel-default">
+		<div class="panel-heading"><%= category.name %></div>
+
+		<div class="panel">
+			<table>
+				<% criteria.each do |criterion| %>
+				<tr>
+					<td><%= criterion.display_name.capitalize %></td>
+					<td><%= @country.scores.find_by(criterion_id: criterion.id).score %></td>
+				</tr>
+				<% end %>
+			</table>
+		</div>
+
+	</div>
+<% end %>

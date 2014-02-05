@@ -1,25 +1,33 @@
 <div class='right'>
 	<%= link_to 'Play next question', questions_path, class: "btn btn-primary" %>
 </div>
+
 <div class='main'>
+	<h3 class='btn btn-default'><%= link_to @answer.criterion.category.name, category_path(@answer.criterion.category) %></h3>
+
+	<div><%= render partial: 'flash_feedback' %></div>
+
 	<div class='question'>
-		<h1>The line up for:<br>
-		<%= @answer.criterion.display_name.titlecase %></h1>
+		<h1><%= @ordered_countries[0][:country_name] %> came in at <%= @ordered_countries[0][:rank] %> and <%= @ordered_countries[1][:country_name] %> came in at <%= @ordered_countries[1][:rank] %>.</h1>
 	</div>
-		<div>
-			<% if flash[:notice].present? %>
-				<p class="alert alert-success"><%= flash[:notice] %></p>
-			<% elsif flash[:warning].present? %>
-				<p class="alert alert-danger"><%= flash[:warning] %></p>
-			<% end %>
-		</div>
+
+
+	<h3>The line up for:<br>
+	<%= @answer.criterion.display_name.titlecase %></h3>
+
+
 
 <div class='row'>
 	<div class='col-md-7 col-sm-7'>
 		<%= render partial: 'country_list' %>
 	</div>
 	<div class='col-md-5 col-sm-5'>
-		<%= render partial: 'rank_box' %>
+		<div class='row'>
+			<%= render partial: 'rank_box' %>
+		</div>
+		<div class='row'>
+		<%= render partial: 'article_box' %>
+		</div>
 	</div>
 </div>
 

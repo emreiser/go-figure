@@ -16,9 +16,9 @@ class AnswersController < ApplicationController
 
 		if @answer.save
 			if @answer[:correct] == true
-				flash[:notice] = "That's right!"
+				flash[:notice] = "That's right."
 			else
-				flash[:warning] = "Not so much."
+				flash[:warning] = "Go figure."
 				add_bias_points(@answer)
 			end
 			redirect_to @answer
@@ -50,11 +50,11 @@ class AnswersController < ApplicationController
 		@answer = Answer.find(params[:id])
 		@highlighted_countries = []
 		@highlighted_countries << @answer.country_1 << @answer.country_2
-		if @highlighted_countries.include? Country.find_by(name: 'United States')
-			@highlighted_countries << Country.find_by(name: 'Canada')
-		else
-			@highlighted_countries << Country.find_by(name: 'United States')
-		end
+		# if @highlighted_countries.include? Country.find_by(name: 'United States')
+		# 	@highlighted_countries << Country.find_by(name: 'Canada')
+		# else
+		# 	@highlighted_countries << Country.find_by(name: 'United States')
+		# end
 
 		@ordered_scores = @answer.criterion.scores.valid_scores.order(score: :desc)
 
