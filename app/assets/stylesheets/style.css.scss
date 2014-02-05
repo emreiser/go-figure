@@ -12,3 +12,20 @@ body {
 	text-align: center;
 	padding: 5px;
 }
+
+.navbar {
+	border-radius: 0px;
+	background-color: whitesmoke;
+}
+
+.nav > li:hover {
+	background: rgba(255, 255, 255, .8);
+}
+
+#bs-example-navbar-collapse-1 {
+	margin-left: -15px;
+}
+
+ul#right-nav > li > a {
+	color: #428bca;
+}

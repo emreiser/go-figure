@@ -24,19 +24,19 @@ h1 {
 }
 
 header {
-	height: 165px;
+	height: 130px;
 	color: gray;
 	background: url('map-header.png') no-repeat;
 	background-size: cover;
 	font-family: 'Raleway', sans-serif;
 	text-align: left;
-	position: relative;
+	padding: 0;
 }
 
 header h1 {
 	font-size: 300%;
 	font-weight: bold;
-	margin-top: 30px;
+	margin-top: 40px;
 }
 
 header h1 a, header h1 a:visited, header h1 a:active {
@@ -54,24 +54,6 @@ header h4 {
 	margin-top: -7px;
 }
 
-nav {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 50px;
-	background: rgba(224, 224, 224, .9);
-	text-align: center;
-}
-
-nav ul li {
-	display: inline-block;
-	height: 100%;
-	padding: 15px 30px;
-}
-
-nav ul li:hover {
-	background: rgba(255, 255, 255, .8);
-}
 
 table {
 	width: 80%;
@@ -119,10 +101,10 @@ td:first-child {
 	background-image: url('arrow-blue.png');
 }
 
-
 .relative {
 	position: relative;
 }
+
 
 /* Landing page
 =================================*/
