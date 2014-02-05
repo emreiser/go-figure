@@ -1,3 +1,4 @@
+@import "bootstrap";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -8,6 +9,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require 'reset'
  *= require_self
  *= require_tree .
  */
@@ -15,8 +17,8 @@
 /* General
 =================================*/
 
-ol {
-	list-style: decimal inside;
+body {
+	font-family: 'Raleway', sans-serif;
 }
 
 h1 {
@@ -24,23 +26,22 @@ h1 {
 }
 
 header {
-	height: 130px;
+	min-height: 140px;
 	color: gray;
-	background: url('map-header.png') no-repeat;
+	background: url('map-header-4.png') no-repeat center;
 	background-size: cover;
-	font-family: 'Raleway', sans-serif;
 	text-align: left;
 	padding: 0;
 }
 
 header h1 {
-	font-size: 300%;
-	font-weight: bold;
+	font-size: 350%;
+	font-weight: normal;
 	margin-top: 40px;
 }
 
 header h1 a, header h1 a:visited, header h1 a:active {
-	color: gray;
+	color: black;
 	text-decoration: none;
 }
 
@@ -50,8 +51,43 @@ header h1 a:hover {
 }
 
 header h4 {
-	color: black;
+	color: gray;
 	margin-top: -7px;
+}
+
+/* Nav bar
+===========================*/
+
+.navbar {
+	border-radius: 0px;
+	background-color: rgba(238, 238, 238, .8);
+}
+
+.nav > li {
+	font-weight: bold;
+}
+
+.nav > li:hover {
+	background: rgba(255, 255, 255, .8);
+}
+
+#bs-example-navbar-collapse-1 {
+	margin-left: -30px;
+}
+
+ul#right-nav > li > a {
+	color: #428bca;
+}
+
+/* Main
+======================*/
+
+.feature {
+	font-size: 120%;
+}
+
+ol {
+	list-style: decimal inside;
 }
 
 
@@ -80,9 +116,31 @@ td:first-child {
 }
 
 .right {
-	text-align: right;
 	float:right;
 }
+
+.text-right {
+	text-align: right;
+}
+
+.title-block {
+	display: block;
+	width: 20%;
+}
+
+.left {
+	text-align: right;
+	float:left;
+}
+
+.padded {
+	padding: 20px 0 20px;
+}
+
+.border-left {
+	border-left: 1px solid #dddddd;
+}
+
 
 .clear {
 	clear: both;
@@ -117,23 +175,23 @@ td:first-child {
 }
 
 .strip {
-	height: 300px;
 	width: 100%;
-	background: rgba(255, 255, 255, .8);
+	background: rgba(255, 255, 255, .9);
 	position: absolute;
 	top: 150px;
+	border: 1px solid #e7e7e7;
+	padding: 50px 50px;
 }
 
 .title {
 	width: 80%;
 	margin: 0 auto;
-	padding: 50px 50px;
 	text-align: left;
 	font-family: 'Raleway', sans-serif;
 }
 
 .title h1 {
-	font-size: 600%;
+	font-size: 500%;
 	color: gray;
 	display: block;
 	margin: 0;
@@ -166,6 +224,11 @@ td:first-child {
 	text-align: left;
 }
 
+ul, ol {
+	margin: 0;
+	padding: 0;
+}
+
 ul li {
 	list-style-type: none;
 	display: inline-block;
@@ -183,4 +246,3 @@ ul li {
 .bias {
 	text-align: right;
 }
-

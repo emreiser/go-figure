@@ -7,5 +7,6 @@ Project1::Application.routes.draw do
   resources :questions
   resources :answers
 
+	get '/about' => 'questions#about'
   root to: 'questions#landing'
 end

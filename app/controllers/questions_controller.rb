@@ -4,6 +4,9 @@ class QuestionsController < ApplicationController
 	def landing
 	end
 
+	def about
+	end
+
 	def index
 		@criterion = Criterion.all.shuffle.sample
 
