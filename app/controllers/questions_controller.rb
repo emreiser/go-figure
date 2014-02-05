@@ -1,4 +1,8 @@
 class QuestionsController < ApplicationController
+	layout "landing", :only => :landing
+
+	def landing
+	end
 
 	def index
 		@criterion = Criterion.all.shuffle.sample

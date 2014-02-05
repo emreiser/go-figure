@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	  <title>BiUS</title>
+	  <title>Go Figure</title>
+	  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
 	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	  <%= csrf_meta_tags %>
 	</head>
 	<body>
-		<div class='container'>
 
-		<div id='sign-in'>
-			<h5>
-				<% if user_signed_in? %>
-					<%= current_user.email %> | <%= link_to 'Sign out', destroy_user_session_path, method: 'delete' %>
-				<% else %>
-					<%= link_to "Sign in", new_user_session_path %>
-				<% end %>
-			</h5>
+		<header>
+			<div class='container-fluid'>
+
+				<h1><%= link_to "GO FIGURE.", root_path %></h1>
+				<h4>A comparative look at countries through the Human Development Index</h4>
+			</div>
+			<nav>
+			<ul>
+				<div class='container-fluid'>
+					<li>About HDI</li>
+					<li>Country Overviews</li>
+					<li>Bias</li>
+					<li class='right'>
+						<% if user_signed_in? %>
+							<%= current_user.email %> | <%= link_to 'Sign out', destroy_user_session_path, method: 'delete' %>
+						<% else %>
+							<%= link_to 'Sign in', new_user_session_path %>
+						<% end %>
+					</li>
 		</div>
+				</div>
+			</ul>
+			</nav>
+		</header>
 
+		<div class='container-fluid'>
+
+		<div class='clear'>
 		<%= yield %>
+		</div>
 
 		</div>
 

@@ -7,5 +7,5 @@ Project1::Application.routes.draw do
   resources :questions
   resources :answers
 
-  root to: 'questions#index'
+  root to: 'questions#landing'
 end

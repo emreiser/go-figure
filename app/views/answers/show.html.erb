@@ -1,22 +1,15 @@
-<div class='right'>
-	<%= link_to 'Play next question', questions_path, class: "btn btn-primary" %>
-</div>
-
 <div class='main'>
-	<h3 class='btn btn-default'><%= link_to @answer.criterion.category.name, category_path(@answer.criterion.category) %></h3>
+	<div class='narrow'><%= render partial: 'flash_feedback' %></div>
+	<div class='relative'>
+		<%= link_to ' ', questions_path, class: 'next' %>
 
-	<div><%= render partial: 'flash_feedback' %></div>
+		<h4><%= @answer.criterion.display_name.titlecase%> :</h4>
+		<div class='question'>
+			<h2><%= @ordered_countries[0][:country_name] %> came in at <%= @ordered_countries[0][:rank] %> vs. <%= @ordered_countries[1][:country_name] %> at <%= @ordered_countries[1][:rank] %></h2>
+		</div>
+	<div>
 
-	<div class='question'>
-		<h1><%= @ordered_countries[0][:country_name] %> came in at <%= @ordered_countries[0][:rank] %> and <%= @ordered_countries[1][:country_name] %> came in at <%= @ordered_countries[1][:rank] %>.</h1>
-	</div>
-
-
-	<h3>The line up for:<br>
-	<%= @answer.criterion.display_name.titlecase %></h3>
-
-
-
+	<h3>The full line up: </h3>
 <div class='row'>
 	<div class='col-md-7 col-sm-7'>
 		<%= render partial: 'country_list' %>
