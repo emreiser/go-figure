@@ -28,7 +28,7 @@ h1 {
 header {
 	min-height: 140px;
 	color: gray;
-	background: url('map-header-4.png') no-repeat center;
+	background: image-url('map-header-4.png') no-repeat center;
 	background-size: cover;
 	text-align: left;
 	padding: 0;
@@ -152,11 +152,11 @@ td:first-child {
 	top: 0;
 	width: 50px;
 	height: 100px;
-	background-image: url('arrow.png');
+	background-image: image-url('arrow.png');
 }
 
 .next:hover {
-	background-image: url('arrow-blue.png');
+	background-image: image-url('arrow-blue.png');
 }
 
 .relative {
@@ -170,7 +170,7 @@ td:first-child {
 .landing {
 	width: 100%;
 	height: 600px;
-	background: url('map.png') no-repeat;
+	background: image-url('map.png') no-repeat;
 
 }
 
