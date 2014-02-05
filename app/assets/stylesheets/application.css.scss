@@ -21,9 +21,17 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
+a, a:hover, a:active, a:visited {
+	text-decoration: none;
+}
+
 h1 {
 	font-size: 180%;
 }
+
+/*h2 {
+	font-size: 160%;
+}*/
 
 header {
 	min-height: 140px;
@@ -246,6 +254,14 @@ ul li {
 
 .pad-bottom {
 	padding-bottom: 10px;
+}
+
+.pad-right {
+	padding-right: 20px;
+}
+
+.wide {
+	padding: 10px 40px 10px 40px;
 }
 
 .bias {

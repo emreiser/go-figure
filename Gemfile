@@ -6,6 +6,7 @@ gem 'json'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'httparty'
 gem	'devise'
+gem 'd3_rails'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
