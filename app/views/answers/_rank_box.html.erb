@@ -10,7 +10,7 @@
 		    		<ul>
 		    		<h4>
 		    			<li><span class="list_rank"><%= country_hash[:rank] %>. </span>
-		    					<span class="country_name"><%= country_hash[:country_name] %></span>
+		    					<span class="country_name"><%= link_to country_hash[:country_name], country_path(country_hash) %></span>
 		    			</li>
 		    		</h4>
 		    		</ul>

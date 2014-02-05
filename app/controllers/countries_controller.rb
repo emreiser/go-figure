@@ -2,6 +2,7 @@ class CountriesController < ApplicationController
 
 	def index
 		@answer = Answer.new
+		@countries = Country.all
 	end
 
 	def show

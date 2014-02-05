@@ -1,1 +1,17 @@
-<h1>List of all Countries</h1>
+<div class='right pad-bottom'>
+	<%= link_to 'Back to Compare', questions_path, class: "btn btn-primary" %>
+</div>
+<h1>List of Countries</h1>
+
+<div class="panel panel-default clear">
+	<div class='line_up'>
+		<ol>
+			<% @countries.each do |country| %>
+					<div class='panel'>
+						<li><%= link_to country.name, country_path(country) %></li>
+					</div>
+			<% end %>
+
+		</ol>
+	</div>
+</div>

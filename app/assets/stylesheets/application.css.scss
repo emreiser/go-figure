@@ -22,7 +22,7 @@ body {
 }
 
 h1 {
-	font-size: 140%;
+	font-size: 180%;
 }
 
 header {
@@ -59,6 +59,7 @@ header h4 {
 ===========================*/
 
 .navbar {
+	margin-top: 10px;
 	border-radius: 0px;
 	background-color: rgba(238, 238, 238, .8);
 }
@@ -111,7 +112,7 @@ td:first-child {
 
 .main {
 	text-align: center;
-	margin: 30px auto 0 auto;
+	margin: 15px auto 0 auto;
 	width: 85%;
 }
 
@@ -241,6 +242,10 @@ ul li {
 .highlight {
 	background: #A2B5CD;
 	font-size: 110%;
+}
+
+.pad-bottom {
+	padding-bottom: 10px;
 }
 
 .bias {
