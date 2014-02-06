@@ -1,0 +1,24 @@
+<div class='right pad-bottom'>
+	<%= link_to 'Back to Compare', questions_path, class: "btn btn-primary" %>
+</div>
+
+<div>
+	<h2>Bias Points</h2>
+	<p>As users click through the comparisons on this site, points are recorded for each incorrect answer. When a user assumes a country ranked better than it did in a certain categoty, a <i>positive bias point</i> is accrued. A <i>negative bias point</i> is recorded when a user assumes a country ranked lower than it did. </p>
+</div>
+<hr>
+
+<div class='row clear'>
+
+	<% @featured_countries.each do |country| %>
+		<div class='col-md-6 col-sm-6 pad-bottom'>
+			<h1><strong><%= country.name %></strong></h1>
+
+			<div class='panel panel-default clear padded'>
+				<h4>Aggregate positive bias points: <%= country.bias_points.where(positive: true).count %></h4>
+				<h4>Aggregate negative bias points: <%= country.bias_points.where(positive: false).count %></h4>
+			</div>
+		</div>
+	<% end %>
+
+</div>

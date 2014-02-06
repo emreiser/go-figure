@@ -58,10 +58,10 @@ Criterion.create(category: command_over_resources, name: '_2010_health_of_gdp', 
 Criterion.create(category: command_over_resources, name: '_2010_military_of_gdp', display_name: 'percent of GDP spent on military in 2010', higher_good: false )
 Criterion.create(category: command_over_resources, name: '_2005_2010_education_of_gdp', display_name: 'percent of GDP spent on education in 2010', higher_good: true )
 #Innovation & tech
-Criterion.create(category: innovation_technologoy, name: '_2010_fixed_and_mobile_telephone_subscribers', display_name: 'number of fixed and mobile telephone subscribers in 2010', higher_good: true)
+Criterion.create(category: innovation_technologoy, name: '_2010_fixed_and_mobile_telephone_subscribers', display_name: 'ratio of telephone subscribers in 2010', higher_good: true)
 Criterion.create(category: innovation_technologoy, name: '_2005_2010_research_and_development_expenditure', display_name: "research and development expenditure in 2005\-2010", higher_good: true)
 Criterion.create(category: innovation_technologoy, name: '_2002_2011_graduates_in_science_and_engineering', display_name: "percent of graduates in science and engineering in 2002\-2011", higher_good: true)
-Criterion.create(category: innovation_technologoy, name: '_2010_internet_users', display_name: 'percent of internet users in 2010', higher_good: true)
+Criterion.create(category: innovation_technologoy, name: '_2010_internet_users', display_name: 'ratio of internet users in 2010', higher_good: true)
 #Environment
 Criterion.create(category: environment, name: '_2009_renewable_energy_usage', display_name: 'renewable energy usage 2009', higher_good: true)
 Criterion.create(category: environment, name: '_2009_agricultural_land', display_name: 'percent of agricultural land in 2009', higher_good: true)
@@ -77,7 +77,7 @@ Criterion.create(category: population, name: '_2000_2005_annual_population_growt
 #Gender Inequality
 Criterion.create(category: gender_inequality, name: '_2012_seats_in_national_parliament_female', display_name: 'percentage of seats in parliament held by women in 2012', higher_good: true)
 Criterion.create(category: gender_inequality, name: 'adolescent_fertility_rate', display_name: 'teen pregnancy rate', higher_good: false)
-Criterion.create(category: gender_inequality, name: '_2012_gender_inequality_index_rank', display_name: 'gender equality index rank', higher_good: true)
+Criterion.create(category: gender_inequality, name: '_2012_gender_inequality_index_rank', display_name: 'gender inequality', higher_good: false)
 Criterion.create(category: gender_inequality, name: '_2006_2010_population_with_at_least_secondary_education_female', display_name: "percent of female population with at least secondary education in 2006\-2010", higher_good: true)
 
 # Seed scores table

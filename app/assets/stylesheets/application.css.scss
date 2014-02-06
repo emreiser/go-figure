@@ -159,13 +159,15 @@ td:first-child {
 	position: absolute;
 	right: 0;
 	top: 0;
-	width: 50px;
+	width: 65px;
 	height: 100px;
-	background-image: image-url('arrow.png');
+	background-image: image-url('arrow2.png');
+	background-repeat: no-repeat;
 }
 
 .next:hover {
-	background-image: image-url('arrow-blue.png');
+	background-image: image-url('arrow2-blue.png');
+	background-repeat: no-repeat;
 }
 
 .relative {
