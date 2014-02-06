@@ -52,7 +52,6 @@ class AnswersController < ApplicationController
 		@highlighted_countries << @answer.country_1 << @answer.country_2
 		usa = Country.find_by(name: 'United States')
 
-		@comparison_country = usa unless @highlighted_countries.include? usa
 		# if @highlighted_countries.include? Country.find_by(name: 'United States')
 		# 	@highlighted_countries << Country.find_by(name: 'Canada')
 		# else
@@ -61,16 +60,27 @@ class AnswersController < ApplicationController
 
 		@ordered_scores = @answer.criterion.scores.valid_scores.order(score: :desc)
 
-		@ordered_countries = @highlighted_countries.map do |country|
+		@answer_countries = @highlighted_countries.map do |country|
 			{
 				rank: @ordered_scores.index {|x| x.country_id == country.id } + 1,
 				country_name: country.name
 			}
 		end
 
-		@comparison_country_rank = (@ordered_scores.index {|x| x.country_id == @comparison_country.id } + 1)
+		@answer_countries.sort! {|x, y| x[:rank] <=> y[:rank] }
 
-		@ordered_countries.sort! {|x, y| x[:rank] <=> y[:rank] }
+		@comparison_country = ''
+		@comparison_country = usa unless @highlighted_countries.include? usa
+
+		if @comparison_country.present?
+			@comparison_country_rank = (@ordered_scores.index {|x| x.country_id == @comparison_country.id } + 1)
+			@compared_countries = []
+			@compared_countries << @answer_countries
+			@compared_countries.flatten! << {rank: @comparison_country_rank, country_name: @comparison_country.name}
+			@compared_countries.sort! {|x, y| x[:rank] <=> y[:rank] }
+		else
+			@compared_countries = @answer_countries
+		end
 	end
 
 

@@ -95,6 +95,10 @@ ul#right-nav > li > a {
 	font-size: 120%;
 }
 
+.alert {
+	padding: 5px 5px;
+}
+
 ol {
 	list-style: decimal inside;
 }
@@ -215,10 +219,11 @@ td:first-child {
 	margin: 5px 0 20px 0;
 }
 
+/* Question / Answer pages
+========================*/
 .container-fluid {
 	width: 80%;
 }
-
 
 .question {
 	width: 80%;
