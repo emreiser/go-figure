@@ -256,6 +256,23 @@ ul li {
 	padding-bottom: 10px;
 }
 
+.list-rank {
+	width: 20%;
+}
+
+.country-name {
+	width: 80%;
+}
+
+.button-rank a, .button-rank a:active, .button-rank a:visited {
+	color: white;
+	font-weight: bold;
+}
+
+.button-rank a:hover {
+	color: #eeeeee;
+}
+
 .pad-right {
 	padding-right: 20px;
 }

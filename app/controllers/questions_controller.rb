@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
 		@country_2 = @valid_countries.last
 
 		@answer = Answer.new
-		@question = "Which country do you think had higher #{@criterion.display_name}?"
+		@question = "Which country do you think had a higher #{@criterion.display_name}?"
 	end
 
 	def show

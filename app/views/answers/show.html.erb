@@ -9,22 +9,21 @@
 
 	<div class='question'>
 		<h2><%= @ordered_countries[0][:country_name] %> came in at <%= @ordered_countries[0][:rank] %> vs. <%= @ordered_countries[1][:country_name] %> at <%= @ordered_countries[1][:rank] %></h2>
-	<div>
-
+	</div>
 	<h3>The full line up: </h3><hr>
-<div class='row'>
-	<div class='col-md-7 col-sm-7'>
-		<%= render partial: 'country_list' %>
-	</div>
-	<div class='col-md-5 col-sm-5'>
-		<div class='row'>
-			<%= render partial: 'rank_box' %>
+	<div class='row'>
+		<div class='col-md-7 col-sm-7'>
+			<%= render partial: 'country_list' %>
 		</div>
-		<div class='row'>
-		<%= render partial: 'article_box' %>
+		<div class='col-md-5 col-sm-5'>
+			<div class='row'>
+				<%= render partial: 'rank_box' %>
+			</div>
+			<div class='row'>
+			<%#= render partial: 'article_box' %>
+			</div>
 		</div>
 	</div>
-</div>
 
 
 </div>
