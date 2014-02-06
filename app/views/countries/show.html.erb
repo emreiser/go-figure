@@ -5,9 +5,13 @@
 
 <div class='bias panel panel-default clear'>
 	<div class='row'>
-		<div class='col-md-7 col-sm-7'>
-			<h4>Aggregate positive bias points: <%= @positive_bias_points %></h4>
-			<h4>Aggregate negative bias points: <%= @negative_bias_points %></h4>
+		<div class='col-md-7 col-sm-7 pad-left'>
+			<% if @country.select == true %>
+				<h4>Aggregate positive bias points: <%= @positive_bias_points %></h4>
+				<h4>Aggregate negative bias points: <%= @negative_bias_points %></h4>
+			<% else %>
+				<h5>(Bias points not tracked for this country)</h5>
+			<% end %>
 		</div>
 		<div class='col-md-5 col-sm-5'>
 			<% if @country.select == true %>
