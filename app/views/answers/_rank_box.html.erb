@@ -4,13 +4,13 @@
   </div>
 
   	<ul>
-	    <% @compared_countries.each do |country_hash| %>
+	    <% @compared_countries.each do |rank_array| %>
 	    	<div class="panel highlight">
 		    	<li>
 		    		<ul>
 		    		<h4>
-		    			<li><span class="list_rank"><%= country_hash[:rank] %>. </span>
-		    					<span class="country_name button-rank"><%= link_to country_hash[:country_name], country_path(Country.find_by(name: country_hash[:country_name])) %></span>
+		    			<li><span class="list_rank"><%= rank_array[0] %>. </span>
+		    					<span class="country_name button-rank"><%= link_to rank_array[1].name, country_path(rank_array[1]) %></span>
 		    			</li>
 		    		</h4>
 		    		</ul>
