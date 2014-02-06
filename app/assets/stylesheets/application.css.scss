@@ -30,9 +30,13 @@ h1 {
 }
 
 footer {
-	height: 60px;
-	margin: 30px 0 30px 0;
+	height: 25px;
+	margin: 30px 0 20px 0;
 	background-color: rgba(238, 238, 238, .8);
+}
+
+#page {
+	min-height: 300px;
 }
 
 /*h2 {
@@ -108,7 +112,7 @@ ul#right-nav > li > a {
 .alert-danger {
 background-color: #fdeee4;
 border-color: #fd9450;
-color: #fe8537;
+color: #ff7821;
 }
 
 ol {

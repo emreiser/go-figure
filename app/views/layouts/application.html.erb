@@ -36,11 +36,11 @@
 			      </ul>
 
 			      <ul class="nav navbar-nav navbar-right" id="right-nav">
-			        <li>
 			        	<% if user_signed_in? %>
-										<%= current_user.email %> | <%= link_to 'Sign out', destroy_user_session_path, method: 'delete' %>
+										<li><%= link_to current_user.email, user_path(current_user) %></li>
+										<li><%= link_to 'Sign out', destroy_user_session_path, method: 'delete' %></li>
 									<% else %>
-										<%= link_to 'Sign in', new_user_session_path %>
+										<li><%= link_to 'Sign in', new_user_session_path %></li>
 									<% end %>
 			        </li>
 			      </ul>
@@ -52,7 +52,7 @@
 
 
 
-		<div class='container-fluid'>
+		<div class='container-fluid' id='page'>
 
 		<div class='clear'>
 		<%= yield %>

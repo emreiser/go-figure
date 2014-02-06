@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+
+	<div class="panel">
+		<h1>User summary</h1>
+	</div>
+	<div class="panel">
+		<h4><strong>Total answers: <%= @answers.count %></strong></h4>
+	</div>
+	<div class="panel">
+		<h5>Correct answers: <%= @answers.where(correct: true).count %></h5>
+	</div>
+	<div class="panel">
+		<h5>Inorrect answers: <%= @answers.where(correct: false).count %></h5>
+	</div>
+</div>
