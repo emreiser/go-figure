@@ -18,7 +18,7 @@ class BiasPointsController < ApplicationController
 				'India'
 			]
 
-		@featured_countries = selected_countries.map { |country| Country.find_by(name: country)}
+		@featured_countries = selected_countries.sort.map { |country| Country.find_by(name: country)}
 	end
 
 

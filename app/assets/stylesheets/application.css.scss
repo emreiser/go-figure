@@ -29,6 +29,12 @@ h1 {
 	font-size: 180%;
 }
 
+footer {
+	height: 60px;
+	margin: 30px 0 30px 0;
+	background-color: rgba(238, 238, 238, .8);
+}
+
 /*h2 {
 	font-size: 160%;
 }*/
@@ -97,6 +103,12 @@ ul#right-nav > li > a {
 
 .alert {
 	padding: 5px 5px;
+}
+
+.alert-danger {
+background-color: #fdeee4;
+border-color: #fd9450;
+color: #fe8537;
 }
 
 ol {
@@ -236,7 +248,7 @@ td:first-child {
 
 .panel {
 	margin: 5px 5px;
-	padding: 5px 5px;
+	padding: 10px 20px;
 }
 
 .line_up {
