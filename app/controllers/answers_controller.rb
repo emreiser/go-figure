@@ -50,6 +50,9 @@ class AnswersController < ApplicationController
 		@answer = Answer.find(params[:id])
 		@highlighted_countries = []
 		@highlighted_countries << @answer.country_1 << @answer.country_2
+		usa = Country.find_by(name: 'United States')
+
+		@comparison_country = usa unless @highlighted_countries.include? usa
 		# if @highlighted_countries.include? Country.find_by(name: 'United States')
 		# 	@highlighted_countries << Country.find_by(name: 'Canada')
 		# else
@@ -64,6 +67,8 @@ class AnswersController < ApplicationController
 				country_name: country.name
 			}
 		end
+
+		@comparison_country_rank = (@ordered_scores.index {|x| x.country_id == @comparison_country.id } + 1)
 
 		@ordered_countries.sort! {|x, y| x[:rank] <=> y[:rank] }
 	end

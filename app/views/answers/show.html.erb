@@ -9,6 +9,9 @@
 
 	<div class='question'>
 		<h2><%= @ordered_countries[0][:country_name] %> came in at <%= @ordered_countries[0][:rank] %> vs. <%= @ordered_countries[1][:country_name] %> at <%= @ordered_countries[1][:rank] %></h2>
+		<% if @comparison_country.present? %>
+		<h4 class='gray'>(For comparison, <%= @comparison_country.name %> came in at <%= @comparison_country_rank %>.)</h4>
+		<% end %>
 	</div>
 	<h3>The full line up: </h3><hr>
 	<div class='row'>

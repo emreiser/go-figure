@@ -4,6 +4,8 @@
 			<% @ordered_scores.each do |score| %>
 				<% if @highlighted_countries.include? score.country %>
 					<div class='panel highlight'>
+				<% elsif @comparison_country == score.country %>
+					<div class='panel highlight'>
 				<% else %>
 					<div class='panel'>
 				<% end %>
