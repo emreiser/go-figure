@@ -3,12 +3,20 @@
 </div>
 <h1><strong>Breakdown for <%= @country.name %></strong></h1>
 
-
-
 <div class='bias panel panel-default clear'>
-	<h4>Aggregate positive bias points: <%= @positive_bias_points %></h4>
-	<h4>Aggregate negative bias points: <%= @negative_bias_points %></h4>
+	<div class='row'>
+		<div class='col-md-7 col-sm-7'>
+			<h4>Aggregate positive bias points: <%= @positive_bias_points %></h4>
+			<h4>Aggregate negative bias points: <%= @negative_bias_points %></h4>
+		</div>
+		<div class='col-md-5 col-sm-5'>
+			<% if @country.select == true %>
+				<%= image_tag("#{@country.code}.png", alt: "#{@country.name}", width: '100%') %>
+			<% end %>
+		</div>
+	</div>
 </div>
+
 
 <div>
 <%= render partial: 'criteria_breakdown' %>

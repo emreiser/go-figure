@@ -12,13 +12,20 @@
 
 	<% @featured_countries.each do |country| %>
 		<div class='col-md-6 col-sm-6 pad-bottom'>
-			<div class="panel-heading">
-				<h3><strong><%= country.name %></strong></h3>
-			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3><strong><%= country.name %></strong></h3>
+				</div>
 
-			<div class='panel panel-default clear padded'>
-				<h4>Aggregate positive bias points: <%= country.bias_points.where(positive: true).count %></h4>
-				<h4>Aggregate negative bias points: <%= country.bias_points.where(positive: false).count %></h4>
+				<div class='row'>
+						<div class='col-md-7 col-sm-7'>
+							<h4>Positive bias points: <%= country.bias_points.where(positive: true).count %></h4>
+							<h4>Negative bias points: <%= country.bias_points.where(positive: false).count %></h4>
+						</div>
+						<div class='col-md-5 col-sm-5'>
+						<%= image_tag("#{country.code}.png", alt: "#{country.name}", width: '120%') %>
+						</div>
+				</div>
 			</div>
 		</div>
 	<% end %>

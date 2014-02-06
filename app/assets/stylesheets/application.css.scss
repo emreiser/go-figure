@@ -46,8 +46,8 @@ footer {
 header {
 	min-height: 140px;
 	color: gray;
-	background: image-url('map-header-4.png') no-repeat center;
-	background-size: cover;
+	background: image-url('map-header.png') no-repeat center;
+	background-size: cover !important;
 	text-align: left;
 	padding: 0;
 }
@@ -204,7 +204,8 @@ td:first-child {
 .landing {
 	width: 100%;
 	height: 600px;
-	background: image-url('map.png') no-repeat;
+	background: image-url('map-vector.png') no-repeat;
+	background-size: cover;
 
 }
 
@@ -305,8 +306,4 @@ ul li {
 
 .wide {
 	padding: 10px 40px 10px 40px;
-}
-
-.bias {
-	text-align: right;
 }
