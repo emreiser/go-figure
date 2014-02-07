@@ -77,7 +77,7 @@ class AnswersController < ApplicationController
 		end
 		@comparison_country_rank = @ordered_countries.index(@comparison_country)
 
-		if @comparison_country.present? && @comparison_country.scores.where(criterion_id: @answer.criterion.id)[0].score != nil
+		if @comparison_country.present?
 			@highlighted_countries << @comparison_country
 			@compared_countries_rank = @ordered_countries.map {|country| country if @highlighted_countries.include? country}
 			@compared_countries = @compared_countries_rank.each_with_index.map do |country,i|
