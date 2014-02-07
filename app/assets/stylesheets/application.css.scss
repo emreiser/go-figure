@@ -37,24 +37,17 @@ footer {
 
 input {
 	border-radius: 5px;
-	min-width: 150px;
 }
 
 #page {
 	min-height: 300px;
 }
 
-/*h2 {
-	font-size: 160%;
-}*/
-
 header {
-	min-height: 140px;
 	color: gray;
 	background: image-url('map-header.png') no-repeat center;
-	background-size: cover !important;
+	background-size: cover;
 	text-align: left;
-	padding: 0;
 }
 
 header h1 {
@@ -65,12 +58,10 @@ header h1 {
 
 header h1 a, header h1 a:visited, header h1 a:active {
 	color: black;
-	text-decoration: none;
 }
 
 header h1 a:hover {
-	color: gray;
-	text-decoration: none;
+	color: #474747;
 }
 
 header h4 {
@@ -79,7 +70,7 @@ header h4 {
 }
 
 /* Nav bar
-===========================*/
+=================================*/
 
 .navbar {
 	margin-top: 10px;
@@ -89,6 +80,7 @@ header h4 {
 
 .nav > li {
 	font-weight: bold;
+	font-size: 110%
 }
 
 .nav > li:hover {
@@ -104,24 +96,11 @@ ul#right-nav > li > a {
 }
 
 /* Main
-======================*/
-
-.feature {
-	font-size: 120%;
-}
-
-.alert {
-	padding: 5px 5px;
-}
-
-.glyphicon {
-	font-size: 60%;
-}
+=================================*/
 
 ol {
 	list-style: decimal inside;
 }
-
 
 table {
 	width: 80%;
@@ -147,12 +126,16 @@ td:first-child {
 	width: 85%;
 }
 
-.right {
-	float:right;
+.feature {
+	font-size: 120%;
 }
 
-.text-right {
-	text-align: right;
+.alert {
+	padding: 5px 5px;
+}
+
+.glyphicon {
+	font-size: 60%;
 }
 
 .title-block {
@@ -160,28 +143,7 @@ td:first-child {
 	width: 20%;
 }
 
-.left {
-	text-align: right;
-	float:left;
-}
-
-.padded {
-	padding: 20px 0 20px;
-}
-
-.border-left {
-	border-left: 1px solid #dddddd;
-}
-
-.gray {
-	color: gray;
-}
-
-.clear {
-	clear: both;
-}
-
-.next {
+.next-arrow {
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -191,15 +153,10 @@ td:first-child {
 	background-repeat: no-repeat;
 }
 
-.next:hover {
+.next-arrow:hover {
 	background-image: image-url('arrow2-blue.png');
 	background-repeat: no-repeat;
 }
-
-.relative {
-	position: relative;
-}
-
 
 /* Landing page
 =================================*/
@@ -282,30 +239,6 @@ ul li {
 	font-size: 110%;
 }
 
-.pad-bottom {
-	padding-bottom: 10px;
-}
-
-.pad-left {
-	padding-left: 20px;
-}
-
-.pad-right {
-	padding-right: 20px;
-}
-
-.margin-top {
-	margin-top: 10px;
-}
-
-.margin-bottom {
-	margin-bottom: 10px
-}
-
-.margin-right {
-	margin-right: 10px;
-}
-
 .list-rank {
 	width: 20%;
 }
@@ -353,6 +286,66 @@ input.check_box {
 .country-form {
 	margin: 60px auto;
 	width: 70%;
+}
+
+/* Add Ons
+=================================*/
+
+.right {
+	float:right;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.left {
+	text-align: right;
+	float:left;
+}
+
+.padded {
+	padding: 20px 0 20px;
+}
+
+.border-left {
+	border-left: 1px solid #dddddd;
+}
+
+.gray {
+	color: gray;
+}
+
+.clear {
+	clear: both;
+}
+
+.relative {
+	position: relative;
+
+}
+.pad-bottom {
+	padding-bottom: 10px;
+}
+
+.pad-left {
+	padding-left: 20px;
+}
+
+.pad-right {
+	padding-right: 20px;
+}
+
+.margin-top {
+	margin-top: 10px;
+}
+
+.margin-bottom {
+	margin-bottom: 10px
+}
+
+.margin-right {
+	margin-right: 10px;
 }
 
 
