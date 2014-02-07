@@ -72,6 +72,8 @@ class AnswersController < ApplicationController
 			else
 				@comparison_country = usa unless @highlighted_countries.include? usa
 			end
+		else
+			@comparison_country = usa unless @highlighted_countries.include? usa
 		end
 		@comparison_country_rank = @ordered_countries.index(@comparison_country)
 
