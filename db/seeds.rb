@@ -64,7 +64,7 @@ Criterion.create(category: innovation_technologoy, name: '_2002_2011_graduates_i
 Criterion.create(category: innovation_technologoy, name: '_2010_internet_users', display_name: 'ratio of internet users in 2010', higher_good: true)
 # Environment
 Criterion.create(category: environment, name: '_2009_renewable_energy_usage', display_name: 'renewable energy usage 2009', higher_good: true)
-Criterion.create(category: environment, name: '_2009_agricultural_land', display_name: 'percent of agricultural land in 2009', higher_good: true)
+# Criterion.create(category: environment, name: '_2009_agricultural_land', display_name: 'percent of agricultural land in 2009', higher_good: true)
 Criterion.create(category: environment, name: '_2008_carbon_dioxide_emissions', display_name: 'carbon dioxide emissions in 2008', higher_good: false)
 # Education
 Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_secondary', display_name: "percent enrollment in secondary school in 2002\-2011", higher_good: true)
@@ -72,8 +72,8 @@ Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_
 # Health
 Criterion.create(category: health, name: '_2007_2009_satisfaction_with_health_care_quality', display_name: "satisfaction with health care quality in 2007\-2009", higher_good: true)
 # Population
-Criterion.create(category: population, name: '_2012_urban_population', display_name: 'percent of population in urban areas in 2012')
-Criterion.create(category: population, name: '_2000_2005_annual_population_growth', display_name: "annual population growth in 2000\-2005")
+# Criterion.create(category: population, name: '_2012_urban_population', display_name: 'percent of population in urban areas in 2012')
+Criterion.create(category: population, name: '_2000_2005_annual_population_growth', display_name: "annual population growth in 2000\-2005", higher_good: false)
 # Gender Inequality
 Criterion.create(category: gender_inequality, name: '_2012_seats_in_national_parliament_female', display_name: 'percentage of seats in parliament held by women in 2012', higher_good: true)
 Criterion.create(category: gender_inequality, name: 'adolescent_fertility_rate', display_name: 'teen pregnancy rate', higher_good: false)
