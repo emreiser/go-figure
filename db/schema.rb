@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140204220715) do
   create_table "bias_points", force: true do |t|
     t.integer  "answer_id"
     t.integer  "country_id"
+    t.integer  "user_id"
     t.boolean  "positive"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -80,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140204220715) do
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.integer  "country_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -92,6 +94,7 @@ ActiveRecord::Schema.define(version: 20140204220715) do
     t.datetime "updated_at"
   end
 
+  add_index "users", ["country_id"], name: "index_users_on_country_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 

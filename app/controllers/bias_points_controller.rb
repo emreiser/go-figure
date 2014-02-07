@@ -1,25 +1,9 @@
 class BiasPointsController < ApplicationController
 
-
 	def index
-			selected_countries = [
-				'United States',
-				'Cuba',
-				'Rwanda',
-				'South Korea',
-				'Saudi Arabia',
-				'Mexico',
-				'Venezuela',
-				'United Arab Emirates',
-				'China',
-				'Brazil',
-				'Kenya',
-				'Russia',
-				'India'
-			]
-
-		@featured_countries = selected_countries.sort.map { |country| Country.find_by(name: country)}
+		featured_countries = Country.where(select: true)
+		@countries_by_bias = featured_countries.map{ |c| [c, (c.bias_points.where(positive: true).count - c.bias_points.where(positive: false).count)]}
+		@countries_by_bias.sort!{ |x,y| y[1] <=> x[1] }
 	end
-
 
 end

@@ -10,7 +10,7 @@
 	<div class='question'>
 		<h2><%= @answer_countries[0][1].name %> came in at <%= @answer_countries[0][0] %> vs. <%= @answer_countries[1][1].name %> at <%= @answer_countries[1][0] %></h2>
 		<% if @comparison_country.present? %>
-		<h4 class='gray'>(For comparison, the <%= @comparison_country.name %> came in at <%= @comparison_country_rank %>.)</h4>
+		<h4 class='gray'>(For comparison, <%= @comparison_country.name %> came in at <%= @comparison_country_rank %>.)</h4>
 		<% end %>
 	</div>
 	<h3>The full line up: </h3><hr>

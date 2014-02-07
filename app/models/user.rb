@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :answers
+  has_many :bias_points
+  belongs_to :country
 end

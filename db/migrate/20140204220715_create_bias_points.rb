@@ -3,6 +3,7 @@ class CreateBiasPoints < ActiveRecord::Migration
     create_table :bias_points do |t|
       t.references :answer, index: true
       t.references :country, index: true
+      t.references :user
       t.boolean :positive
 
       t.timestamps

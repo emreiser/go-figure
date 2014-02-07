@@ -58,7 +58,6 @@ class AnswersController < ApplicationController
 
 		@answer_countries_rank = @ordered_countries.map {|country| country if @highlighted_countries.include? country}
 
-
 		@answer_countries = @answer_countries_rank.each_with_index.map do |country,i|
 			if country.present?
 			 [i, country]
@@ -66,9 +65,14 @@ class AnswersController < ApplicationController
 		end
 		@answer_countries.compact!
 
-
 		@comparison_country = ''
-		@comparison_country = usa unless @highlighted_countries.include? usa
+		if user_signed_in?
+			if current_user.country_id.present?
+				@comparison_country = current_user.country
+			else
+				@comparison_country = usa unless @highlighted_countries.include? usa
+			end
+		end
 		@comparison_country_rank = @ordered_countries.index(@comparison_country)
 
 		if @comparison_country.present?
@@ -110,6 +114,11 @@ class AnswersController < ApplicationController
 			second_country_point[:positive] = false
 		else
 			second_country_point[:positive] = true
+		end
+
+		if user_signed_in?
+			first_country_point[:user_id] = current_user.id
+			second_country_point[:user_id] = current_user.id
 		end
 
 		first_country_point.save!

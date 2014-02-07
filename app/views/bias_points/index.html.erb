@@ -10,20 +10,21 @@
 
 <div class='row clear'>
 
-	<% @featured_countries.each do |country| %>
+	<% @countries_by_bias.each do |country_array| %>
 		<div class='col-md-6 col-sm-6 pad-bottom'>
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3><strong><%= country.name %></strong></h3>
+					<h3><strong><%= country_array[0].name %></strong></h3>
 				</div>
 
 				<div class='row'>
-						<div class='col-md-7 col-sm-7'>
-							<h4><span class="glyphicon glyphicon-plus"></span>  Positive bias points: <%= country.bias_points.where(positive: true).count %></h4>
-							<h4><span class="glyphicon glyphicon-minus"></span>  Negative bias points: <%= country.bias_points.where(positive: false).count %></h4>
+						<div class='col-md-7 col-sm-7 pad-left'>
+							<h5><span class="glyphicon glyphicon-plus margin-right"></span>  Positive bias points: <%= country_array[0].bias_points.where(positive: true).count %></h5>
+							<h5><span class="glyphicon glyphicon-minus margin-right"></span>  Negative bias points: <%= country_array[0].bias_points.where(positive: false).count %></h5>
+							<h5>(Net <%= country_array[1] %>)</h5>
 						</div>
 						<div class='col-md-5 col-sm-5'>
-						<%= image_tag("#{country.code}.png", alt: "#{country.name}", width: '120%') %>
+						<%= image_tag("#{country_array[0].code}.png", alt: "#{country_array[0].name}", width: '120%') %>
 						</div>
 				</div>
 			</div>

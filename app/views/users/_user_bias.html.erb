@@ -1,0 +1,21 @@
+<div class='row clear'>
+	<% @featured_countries.each do |country| %>
+		<div class='col-md-6 col-sm-6 pad-bottom'>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3><strong><%= country.name %></strong></h3>
+				</div>
+
+				<div class='row'>
+						<div class='col-md-7 col-sm-7 pad-left'>
+							<h5><span class="glyphicon glyphicon-plus margin-right"></span>  Positive bias points: <%= @positive_bias_points.where(country_id: country.id).count %></h5>
+							<h5><span class="glyphicon glyphicon-minus margin-right"></span>  Negative bias points: <%= @negative_bias_points.where(country_id: country.id).count %></h5>
+						</div>
+						<div class='col-md-5 col-sm-5'>
+						<%= image_tag("#{country.code}.png", alt: "#{country.name}", width: '120%') %>
+						</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>

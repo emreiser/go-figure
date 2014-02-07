@@ -1,0 +1,8 @@
+<div class="panel panel-default">
+	<%= form_for @user do |f| %>
+
+		<%= f.collection_select :country_id, Country.all, :id, :name %>
+		<%= f.submit 'Set comparison country', class: 'btn' %>
+
+	<% end %>
+</div>

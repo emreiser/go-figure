@@ -8,6 +8,10 @@ class QuestionsController < ApplicationController
 	end
 
 	def index
+
+		if user_signed_in?
+			@user = current_user
+		end
 		@criterion = Criterion.all.shuffle.sample
 
 		@valid_scores = Score.where(criterion_id: @criterion.id).where.not(score: nil).shuffle
