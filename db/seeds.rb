@@ -82,7 +82,7 @@ Criterion.create(category: gender_inequality, name: '_2006_2010_population_with_
 
 # Seed scores table
 Category.all.each do |category|
-	collection = JSON.parse(HTTParty.get('http://data.undp.org/resource/# {category.url_end}.json').body)
+	collection = JSON.parse(HTTParty.get("http://data.undp.org/resource/# {category.url_end}.json").body)
 
 	collection.each do |entry|
 		if entry['type'] == 'Ranked Country'
