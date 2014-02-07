@@ -21,7 +21,7 @@
 						<div class='col-md-7 col-sm-7 pad-left'>
 							<h5><span class="glyphicon glyphicon-plus margin-right"></span>  Positive bias points: <%= country_array[0].bias_points.where(positive: true).count %></h5>
 							<h5><span class="glyphicon glyphicon-minus margin-right"></span>  Negative bias points: <%= country_array[0].bias_points.where(positive: false).count %></h5>
-							<h5>(Net <%= country_array[1] %>)</h5>
+							<h5 class='pad-left'>(Net <%= country_array[1] %>)</h5>
 						</div>
 						<div class='col-md-5 col-sm-5'>
 						<%= image_tag("#{country_array[0].code}.png", alt: "#{country_array[0].name}", width: '120%') %>
