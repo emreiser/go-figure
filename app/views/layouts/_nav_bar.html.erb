@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+		</div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class='nav-link'><%= link_to "About", about_path %></li>
+        <li><%= link_to "Compare", questions_path %></li>
+        <li><%= link_to "Country Overviews", countries_path %></li>
+        <li><%= link_to "Bias", bias_points_path %></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right" id="right-nav">
+        	<% if user_signed_in? %>
+							<li><%= link_to current_user.email, user_path(current_user) %></li>
+							<li><%= link_to 'Sign out', destroy_user_session_path, method: 'delete' %></li>
+						<% else %>
+							<li><%= link_to 'Sign in', new_user_session_path %></li>
+						<% end %>
+        </li>
+      </ul>
+
+  	</div>
+	</div>
+</nav>

@@ -9,8 +9,9 @@ class CountriesController < ApplicationController
 		@country = Country.find(params[:id])
 		@categories = Category.all
 
-		@positive_bias_points = BiasPoint.where(country_id: @country.id).where(positive: true).count
-		@negative_bias_points = BiasPoint.where(country_id: @country.id).where(positive: false).count
+		#Count number of positive and negative points for country
+		@positive_bias_points = @country.bias_points.where(positive: true).count
+		@negative_bias_points = @country.bias_points.where(positive: false).count
 
 	end
 
