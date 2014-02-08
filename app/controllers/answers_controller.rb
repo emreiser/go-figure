@@ -101,11 +101,7 @@ class AnswersController < ApplicationController
 
 		#Pull first country from answer and assign positive attribute
 		first_country_point = BiasPoint.new(answer_id: answer.id, country_id: answer.selected_country_id)
-		if answer.criterion.higher_good == true
-			first_country_point[:positive] = true
-		else
-			first_country_point[:positive] = false
-		end
+		first_country_point.set_positive_attribute(answer)
 
 		#Pull second country from answer and assign positive attribute
 		second_country_point = BiasPoint.new(answer_id: answer.id)
@@ -114,11 +110,7 @@ class AnswersController < ApplicationController
 		else
 			second_country_point[:country_id] = answer.country_1_id
 		end
-		if answer.criterion.higher_good == true
-			second_country_point[:positive] = false
-		else
-			second_country_point[:positive] = true
-		end
+		second_country_point.set_positive_attribute(answer)
 
 		#If user signed in, record user id for answer
 		if user_signed_in?
