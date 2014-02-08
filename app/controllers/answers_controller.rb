@@ -46,10 +46,18 @@ class AnswersController < ApplicationController
 		end
 	end
 
+	def set_comparison_country(highlighted_countries)
+		usa = Country.find_by(name: 'United States')
+		if user_signed_in? && current_user.country_id.present?
+			current_user.country
+		else
+			usa unless highlighted_countries.include? usa
+		end
+	end
+
 	def show
 		@answer = Answer.find(params[:id])
 		@highlighted_countries = [@answer.country_1, @answer.country_2]
-		usa = Country.find_by(name: 'United States')
 
 		@ordered_scores = @answer.criterion.scores.valid_scores.order(score: :desc)
 
@@ -66,15 +74,7 @@ class AnswersController < ApplicationController
 		@answer_countries.compact!
 
 		@comparison_country = ''
-		if user_signed_in?
-			if current_user.country_id.present?
-				@comparison_country = current_user.country
-			else
-				@comparison_country = usa unless @highlighted_countries.include? usa
-			end
-		else
-			@comparison_country = usa unless @highlighted_countries.include? usa
-		end
+		@comparison_country = set_comparison_country(@highlighted_countries)
 		@comparison_country_rank = @ordered_countries.index(@comparison_country)
 
 		if @comparison_country.present?
