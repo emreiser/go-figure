@@ -26,8 +26,8 @@ class AnswersController < ApplicationController
 	end
 
 	def get_correct_country(answer)
-		score_country_1 = Score.find_by(criterion_id: answer.criterion_id, country_id: answer.country_1_id).score
-		score_country_2 = Score.find_by(criterion_id: answer.criterion_id, country_id: answer.country_2_id).score
+		score_country_1 = Score.find_country_score(answer.country_1_id, answer.criterion_id)
+		score_country_2 = Score.find_country_score(answer.country_2_id, answer.criterion_id)
 
 		if score_country_1 > score_country_2
 			answer[:country_1_id]
