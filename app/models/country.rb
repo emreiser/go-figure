@@ -8,7 +8,7 @@ class Country < ActiveRecord::Base
 
 	def self.search(search)
 		if search
-			Country.where(name: "#{search}")
+			Country.where("lower(name) LIKE '#{search.downcase}%'")
 		else
 			Country.all.order(:hdi_rank)
 		end
