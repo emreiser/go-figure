@@ -96,3 +96,12 @@ Category.all.each do |category|
 		end
 	end
 end
+
+# Add rank based on sorted scores for each criteria
+Criterion.all.each do |criterion|
+	sorted_scores = Score.all.where(criterion_id: criterion.id).order(score: :desc)
+	sorted_scores.each do |score|
+		score[:rank] = sorted_scores.index(score) + 1
+		score.save!
+	end
+end

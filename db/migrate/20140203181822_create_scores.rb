@@ -4,6 +4,7 @@ class CreateScores < ActiveRecord::Migration
       t.references :criterion, index: true
       t.references :country, index: true
       t.float :score
+      t.integer :rank
 
       t.timestamps
     end

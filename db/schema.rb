@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20140204220715) do
     t.integer  "criterion_id"
     t.integer  "country_id"
     t.float    "score"
+    t.integer  "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
