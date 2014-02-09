@@ -1,8 +1,11 @@
 <div class="panel panel-default">
+	<div class="panel">
+		<h4>Countries ranked from highest to lowest <%= @answer.criterion.display_name %></h4>
+	</div>
 	<div class='line_up'>
 		<ol>
 			<% @ordered_scores.each do |score| %>
-				<% if @highlighted_countries.include? score.country %>
+				<% if @highlighted_country_scores.include? score %>
 					<div class='panel highlight'>
 				<% elsif @comparison_country == score.country %>
 					<div class='panel highlight'>

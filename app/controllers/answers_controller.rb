@@ -46,49 +46,38 @@ class AnswersController < ApplicationController
 		end
 	end
 
-	def set_comparison_country(highlighted_countries)
+	def set_comparison_country(answer_countries)
 		usa = Country.find_by(name: 'United States')
-		if user_signed_in? && current_user.country_id.present?
+
+		if answer_countries.include? usa
+			''
+		elsif user_signed_in? && current_user.country_id.present?
 			current_user.country
 		else
-			usa unless highlighted_countries.include? usa
+			usa
 		end
 	end
 
 	def show
 		@answer = Answer.find(params[:id])
-		@highlighted_countries = [@answer.country_1, @answer.country_2]
+		@answer_country_scores = [
+			Score.where(criterion_id: @answer.criterion.id).where(country_id: @answer.country_1),
+			Score.where(criterion_id: @answer.criterion.id).where(country_id: @answer.country_2)].flatten!
 
-		@ordered_scores = @answer.criterion.scores.valid_scores.order(score: :desc)
+		@highlighted_country_scores = [
+			Score.where(criterion_id: @answer.criterion.id).where(country_id: @answer.country_1),
+			Score.where(criterion_id: @answer.criterion.id).where(country_id: @answer.country_2)].flatten!
 
-		@ordered_countries = @answer.criterion.scores.valid_scores.order(score: :desc).map {|score| score.country}
-		@ordered_countries.unshift('zero')
-
-		@answer_countries_rank = @ordered_countries.map {|country| country if @highlighted_countries.include? country}
-
-		@answer_countries = @answer_countries_rank.each_with_index.map do |country,i|
-			if country.present?
-			 [i, country]
-			end
-		end
-		@answer_countries.compact!
-
-		@comparison_country = ''
-		@comparison_country = set_comparison_country(@highlighted_countries)
-		@comparison_country_rank = @ordered_countries.index(@comparison_country)
+		@comparison_country = set_comparison_country([@answer.country_1, @answer.country_1])
 
 		if @comparison_country.present?
-			@highlighted_countries << @comparison_country
-			@compared_countries_rank = @ordered_countries.map {|country| country if @highlighted_countries.include? country}
-			@compared_countries = @compared_countries_rank.each_with_index.map do |country,i|
-				if country.present?
-			 		[i, country]
-				end
-			end
-			@compared_countries.compact!
-		else
-			@compared_countries = @answer_countries
+			@comparison_country_score = @comparison_country.scores.find_by(criterion_id: @answer.criterion.id)
+			@highlighted_country_scores << @comparison_country_score
 		end
+
+		@answer_country_scores.sort_by!{ |x| x.rank }
+		@highlighted_country_scores.sort_by!{ |x| x.rank }
+		@ordered_scores = Score.valid_scores.where(criterion_id: @answer.criterion.id).sort_by { |x| x.rank }
 	end
 
 

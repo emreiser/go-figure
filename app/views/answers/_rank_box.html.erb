@@ -4,13 +4,13 @@
   </div>
 
   	<ul>
-	    <% @compared_countries.each do |rank_array| %>
+	    <% @highlighted_country_scores.each do |score| %>
 	    	<div class="panel highlight">
 		    	<li>
 		    		<ul>
 		    		<h4>
-		    			<li><span class="list_rank"><%= rank_array[0] %>. </span>
-		    					<span class="country_name button-rank"><%= link_to rank_array[1].name, country_path(rank_array[1]) %></span>
+		    			<li><span class="list_rank"><%= score.rank %>. </span>
+		    					<span class="country_name button-rank"><%= link_to score.country.name, country_path(score.country) %></span>
 		    			</li>
 		    		</h4>
 		    		</ul>
