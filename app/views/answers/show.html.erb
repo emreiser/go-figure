@@ -8,22 +8,17 @@
 			<div class='question'>
 				<h2><%= @answer_country_scores[0].country.name %> came in at <%= @answer_country_scores[0].rank %> vs. <%= @answer_country_scores[1].country.name %> at <%= @answer_country_scores[1].rank %></h2>
 			</div>
-	</div>
+				</div>
 		<% if @comparison_country.present? %>
 		<h4 class='gray pad-bottom'>(For comparison, <%= @comparison_country.name %> came in at <%= @comparison_country_score.rank %>.)</h4>
 		<% end %>
 	<hr>
 	<div class='row margin-top'>
-		<div class='col-md-7 col-sm-7'>
-			<%= render partial: 'country_list' %>
+		<div class='col-lg-5 col-lg-push-7 col-md-5 col-md-push-7'>
+			<%= render partial: 'rank_box' %>
 		</div>
-		<div class='col-md-5 col-sm-5'>
-			<div class='row'>
-				<%= render partial: 'rank_box' %>
-			</div>
-			<div class='row'>
-			<%#= render partial: 'article_box' %>
-			</div>
+		<div class='col-lg-7 col-lg-pull-5 col-md-7 col-md-pull-5'>
+			<%= render partial: 'country_list' %>
 		</div>
 	</div>
 

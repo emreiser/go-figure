@@ -5,7 +5,7 @@
 <h4 class='gray'>(In order of 2012 Human Development Index rank)</h4>
 <div class='pad-top text-right'>
 	<%= form_tag countries_path, method: 'get' do %>
-		<%= text_field_tag :search, params[:search], placeholder: 'Country name' %>
+		<%= text_field_tag :search, params[:search], placeholder: 'Country name', %>
 		<%=	submit_tag "Search", name: nil %>
 	<% end %>
 </div>
