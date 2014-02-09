@@ -10,6 +10,7 @@
 						<div class='col-md-7 col-sm-7 pad-left'>
 							<h5><span class="glyphicon glyphicon-plus margin-right"></span>  Positive bias points: <%= @positive_bias_points.where(country_id: country.id).count %></h5>
 							<h5><span class="glyphicon glyphicon-minus margin-right"></span>  Negative bias points: <%= @negative_bias_points.where(country_id: country.id).count %></h5>
+							<h5 class='pad-left'>(Net <%= @positive_bias_points.where(country_id: country.id).count - @negative_bias_points.where(country_id: country.id).count %>)</h5>
 						</div>
 						<div class='col-md-5 col-sm-5'>
 						<%= image_tag("#{country.code}.png", alt: "#{country.name}", width: '120%') %>
