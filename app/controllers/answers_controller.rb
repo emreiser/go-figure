@@ -49,7 +49,7 @@ class AnswersController < ApplicationController
 	def set_comparison_country(answer_countries)
 		usa = Country.find_by(name: 'United States')
 
-		if answer_countries.include? usa
+		if answer_countries.include? usa.name
 			''
 		elsif user_signed_in? && current_user.country_id.present?
 			current_user.country
@@ -68,7 +68,7 @@ class AnswersController < ApplicationController
 			Score.where(criterion_id: @answer.criterion.id).where(country_id: @answer.country_1),
 			Score.where(criterion_id: @answer.criterion.id).where(country_id: @answer.country_2)].flatten!
 
-		@comparison_country = set_comparison_country([@answer.country_1, @answer.country_1])
+		@comparison_country = set_comparison_country([@answer.country_1.name, @answer.country_1.name])
 
 		if @comparison_country.present?
 			@comparison_country_score = @comparison_country.scores.find_by(criterion_id: @answer.criterion.id)
