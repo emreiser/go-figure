@@ -147,10 +147,12 @@ td:first-child {
 	position: absolute;
 	right: 0;
 	top: 0;
-	width: 5%;
-	height: 100px;
+	width: 8%;
+	height: 100%;
 	background-image: image-url('arrow2.png');
 	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: 0% 50%;
 }
 
 .next-arrow:hover {
