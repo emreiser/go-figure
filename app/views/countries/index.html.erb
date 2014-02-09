@@ -2,6 +2,13 @@
 	<%= link_to 'Back to Compare', questions_path, class: "btn btn-primary" %>
 </div>
 <h1>List of Countries</h1>
+<h4 class='gray'>(In order of 2012 Human Development Index rank)</h4>
+<div class='pad-top text-right'>
+	<%= form_tag countries_path, method: 'get' do %>
+		<%= text_field_tag :search, params[:search], placeholder: 'Country name' %>
+		<%=	submit_tag "Search", name: nil %>
+	<% end %>
+</div>
 
 <div class="panel panel-default clear">
 	<div class='line_up'>

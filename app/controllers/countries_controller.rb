@@ -1,8 +1,7 @@
 class CountriesController < ApplicationController
 
 	def index
-		@answer = Answer.new
-		@countries = Country.all.order(:name)
+		@countries = Country.search(params[:search])
 	end
 
 	def show
