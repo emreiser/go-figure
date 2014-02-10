@@ -165,8 +165,7 @@ td:first-child {
 }
 
 .result {
-	line-height: 1.5em;
-	min-height: 3em;
+	min-height: 60px;
 }
 
 /* Landing page
@@ -198,12 +197,13 @@ td:first-child {
 
 .title h1 {
 	font-size: 500%;
-	color: gray;
+	color: black;
 	display: block;
 	margin: 0;
 }
 
 .title h3 {
+	color: gray;
 	margin: 5px 0 20px 0;
 }
 
