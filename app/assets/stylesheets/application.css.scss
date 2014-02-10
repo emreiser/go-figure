@@ -164,6 +164,11 @@ td:first-child {
 	background-repeat: no-repeat;
 }
 
+.result {
+	line-height: 1.5em;
+	min-height: 3em;
+}
+
 /* Landing page
 =================================*/
 
@@ -368,5 +373,3 @@ input.check_box {
 .bold {
 	font-weight: bold;
 }
-
-
