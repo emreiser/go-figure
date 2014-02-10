@@ -37,8 +37,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development do
+group :development, :test do
 	gem 'pry-rails'
+	gem 'rspec-rails', '~> 3.0.0.beta'
 end
 
 group :production do
