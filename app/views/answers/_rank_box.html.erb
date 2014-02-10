@@ -5,18 +5,17 @@
 
   	<ul>
 	    <% @highlighted_country_scores.each do |score| %>
-	    	<div class="panel highlight">
+	    	<div class="panel highlight text-left">
 		    	<li>
 		    		<ul>
 		    		<h4>
-		    			<li><span class="list_rank"><%= score.rank %>. </span>
-		    					<span class="country_name button-rank"><%= link_to score.country.name, country_path(score.country) %></span>
+		    			<li><span class="list-rank"><%= score.rank %>. </span>
+		    					<span class="country-name button-rank"><%= link_to score.country.name, country_path(score.country) %></span>
 		    			</li>
 		    		</h4>
 		    		</ul>
 		    	</li>
 	    	</div>
 	    <% end %>
-
     </ul>
 </div>

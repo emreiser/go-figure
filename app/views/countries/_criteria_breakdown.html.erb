@@ -5,10 +5,14 @@
 
 		<div class="panel">
 			<table>
+				<tr class='bold'>
+					<td>Indicator</td>
+					<td>Rank</td>
+				</tr>
 				<% criteria.each do |criterion| %>
 				<tr>
 					<td><%= criterion.display_name.capitalize %></td>
-					<td><%= @country.scores.find_by(criterion_id: criterion.id).score %></td>
+					<td><%= @country.scores.find_by(criterion_id: criterion.id).rank %></td>
 				</tr>
 				<% end %>
 			</table>

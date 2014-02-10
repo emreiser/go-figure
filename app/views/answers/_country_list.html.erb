@@ -1,9 +1,8 @@
 <div class="panel panel-default">
 	<div class="panel">
-		<h4>Countries ranked from highest to lowest <%= @answer.criterion.display_name %></h4>
+		<h4>Countries ranked from <%= "#{@rank_order}" %> <%= @answer.criterion.display_name %></h4>
 	</div>
 	<div class='line_up'>
-		<ol>
 			<% @ordered_scores.each do |score| %>
 				<% if @highlighted_country_scores.include? score %>
 					<div class='panel highlight'>
@@ -12,15 +11,14 @@
 				<% else %>
 					<div class='panel'>
 				<% end %>
-						<li>
-							<ul>
-								<li><%= score.country.name %></li>
-								<li><%= score.score %></li>
-							</ul>
-						</li>
+					<ul>
+						<li class='short'><%= score.rank %></li>
+						<li><%= score.country.name %></li>
+					</ul>
 					</div>
 			<% end %>
-
-		</ol>
+			<div class='panel text-center'>
+				<%= link_to "Back to top", '#' %>
+			</div>
 	</div>
 </div>

@@ -26,8 +26,14 @@ class QuestionsController < ApplicationController
 		@country_1 = @valid_countries.first
 		@country_2 = @valid_countries.last
 
+		if @criterion.higher_good == true
+			prompt_word = 'a higher'
+		else
+			prompt_word = 'lower'
+		end
+
 		@answer = Answer.new
-		@question = "Which country do you think had a higher #{@criterion.display_name}?"
+		@question = "Which country do you think had #{prompt_word} #{@criterion.display_name}?"
 	end
 
 	def show

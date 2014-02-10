@@ -30,13 +30,17 @@ h1 {
 }
 
 footer {
+	font-size: 80%;
+	text-align: center;
 	height: 25px;
 	margin: 30px 0 20px 0;
 	background-color: rgba(238, 238, 238, .8);
+	padding: 5px 5px;
 }
 
 input {
 	border-radius: 5px;
+	padding: 3px 3px;
 }
 
 #page {
@@ -233,7 +237,7 @@ ul li {
 }
 
 .line_up ul li:first-child {
-	width: 65%;
+	width: 10%;
 }
 
 .highlight {
@@ -243,15 +247,16 @@ ul li {
 
 .list-rank {
 	width: 20%;
+	font-size: 90%;
 }
 
 .country-name {
-	width: 80%;
+	font-size: 90%;
 }
 
 .button-rank a, .button-rank a:active, .button-rank a:visited {
 	color: white;
-	font-weight: bold;
+	// font-weight: bold;
 }
 
 .button-rank a:hover {
@@ -261,6 +266,11 @@ ul li {
 .wide {
 	padding: 10px 40px 10px 40px;
 }
+
+.cat-name {
+	width: 500px;
+}
+
 
 /* Devise forms
 ===========================*/
@@ -353,6 +363,10 @@ input.check_box {
 
 .margin-right {
 	margin-right: 10px;
+}
+
+.bold {
+	font-weight: bold;
 }
 
 

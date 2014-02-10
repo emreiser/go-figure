@@ -58,6 +58,14 @@ class AnswersController < ApplicationController
 		end
 	end
 
+	def get_rank_order(criterion)
+		if criterion.higher_good == true
+			'highest to lowest'
+		else
+			'lowest to highest'
+		end
+	end
+
 	def show
 		@answer = Answer.find(params[:id])
 		@answer_country_scores = [
@@ -75,6 +83,7 @@ class AnswersController < ApplicationController
 			@highlighted_country_scores << @comparison_country_score
 		end
 
+		@rank_order = get_rank_order(@answer.criterion)
 		@answer_country_scores.sort_by!{ |x| x.rank }
 		@highlighted_country_scores.sort_by!{ |x| x.rank }
 		@ordered_scores = Score.valid_scores.where(criterion_id: @answer.criterion.id).sort_by { |x| x.rank }
