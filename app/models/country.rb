@@ -14,12 +14,12 @@ class Country < ActiveRecord::Base
 		end
 	end
 
-	def positive_bias
-		self.bias_points.where(positive: true)
+	def count_positive_bias
+		self.bias_points.where(positive: true).count
 	end
 
-	def negative_bias
-		self.bias_points.where(positive: false)
+	def count_negative_bias
+		self.bias_points.where(positive: false).count
 	end
 
 end

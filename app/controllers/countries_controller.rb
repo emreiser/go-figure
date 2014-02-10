@@ -9,8 +9,8 @@ class CountriesController < ApplicationController
 		@categories = Category.all
 
 		#Count number of positive and negative points for country
-		@positive_bias_points = @country.positive_bias.count
-		@negative_bias_points = @country.negative_bias.count
+		@positive_bias_points = @country.count_positive_bias
+		@negative_bias_points = @country.count_negative_bias
 	end
 
 
