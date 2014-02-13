@@ -81,6 +81,7 @@ Criterion.create(category: gender_inequality, name: '_2012_gender_inequality_ind
 Criterion.create(category: gender_inequality, name: '_2006_2010_population_with_at_least_secondary_education_female', display_name: "percent of female population with at least secondary education in 2006\-2010", higher_good: true)
 
 # Seed scores table
+# Validate score is number
 Category.all.each do |category|
 	collection = JSON.parse(HTTParty.get("http://data.undp.org/resource/#{category.url_end}.json").body)
 
@@ -89,8 +90,8 @@ Category.all.each do |category|
 			criteria = Criterion.where(category_id: category.id)
 			criteria.each do |criterion|
 				country = Country.find_by(code: entry['country_code'])
-				if country.present?
-					Score.create(country_id: country.id, criterion_id: criterion.id, score: entry[criterion.name])
+				if country.present? && entry[criterion.name].present?
+					Score.create!(country_id: country.id, criterion_id: criterion.id, score: entry[criterion.name])
 				end
 			end
 		end

@@ -7,4 +7,12 @@ class Answer < ActiveRecord::Base
 	belongs_to :country_2, class_name: Country, foreign_key: :country_2_id
 	belongs_to :selected_country, class_name: Country, foreign_key: :selected_country_id
 
+
+	def get_rank_order
+		if self.criterion.higher_good == true
+			'highest to lowest'
+		else
+			'lowest to highest'
+		end
+	end
 end
