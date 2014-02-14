@@ -90,21 +90,27 @@ Category.all.each do |category|
 			criteria = Criterion.where(category_id: category.id)
 			criteria.each do |criterion|
 				country = Country.find_by(code: entry['country_code'])
-				if country.present? && entry[criterion.name].present?
-					Score.create!(country_id: country.id, criterion_id: criterion.id, score: entry[criterion.name])
+				if country.present?
+					if entry[criterion.name].present?
+						Score.create!(country_id: country.id, criterion_id: criterion.id, score: entry[criterion.name])
+					end
 				end
 			end
 		end
 	end
 end
 
+Criterion.all.each do |criterion|
+
+end
+
 # Add rank based on sorted scores for each criteria
 Criterion.all.each do |criterion|
-	sorted_scores = Score.valid_scores.where(criterion_id: criterion.id)
+	scores = criterion.scores
 	if criterion.higher_good == true
-		sorted_scores.order!(score: :desc)
+		sorted_scores = scores.sort!{ |x, y| y.score <=> x.score }
 	else
-		sorted_scores.order!(score: :asc)
+		sorted_scores = scores.sort!{ |x, y| x.score <=> y.score }
 	end
 
 	sorted_scores.each do |score|

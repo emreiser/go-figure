@@ -79,9 +79,9 @@ class AnswersController < ApplicationController
 		end
 
 		@rank_order = @answer.get_rank_order
-		@answer_country_scores.sort_by!{ |x| x.rank }
-		@highlighted_country_scores.sort_by!{ |x| x.rank }
-		@ordered_scores = @answer.criterion.scores.sort!{ |x, y| x.rank <=> y.rank }
+		@answer_country_scores.sort! {|x, y| x.rank <=> y.rank }
+		@highlighted_country_scores.sort! {|x, y| x.rank <=> y.rank }
+		@ordered_scores = @answer.criterion.scores.sort!{|x, y| x.rank <=> y.rank }
 	end
 
 
