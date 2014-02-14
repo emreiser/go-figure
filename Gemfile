@@ -6,6 +6,7 @@ gem 'json'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'httparty'
 gem	'devise'
+gem 'newrelic_rpm'
 
 
 # Use postgresql as the database for Active Record
@@ -48,6 +49,10 @@ group :production do
 end
 
 gem 'simplecov', require: false, group: :test
+
+group :development do
+  gem 'bullet'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

@@ -12,9 +12,9 @@ class QuestionsController < ApplicationController
 		if user_signed_in?
 			@user = current_user
 		end
-		@criterion = Criterion.all.shuffle.sample
+		@criterion = Criterion.includes(:category).shuffle.sample
 
-		@valid_scores = Score.where(criterion_id: @criterion.id).where.not(score: nil).shuffle
+		@valid_scores = Score.where(criterion_id: @criterion.id).where.not(score: nil).includes(:country).shuffle
 		@valid_countries = []
 
 		@valid_scores.each do |score|
