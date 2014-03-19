@@ -58,4 +58,13 @@ class Answer < ActiveRecord::Base
 		end
 	end
 
+	def country_scores
+		scores = [
+			Score.get_country_score(self.country_1_id, self.criterion_id),
+			Score.get_country_score(self.country_2_id, self.criterion_id)
+			]
+
+		return scores.sort! {|x, y| x.rank <=> y.rank }
+	end
+
 end

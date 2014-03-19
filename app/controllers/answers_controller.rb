@@ -33,32 +33,25 @@ class AnswersController < ApplicationController
 		end
 	end
 
-	def get_score_from_country(answer, country)
-		answer.criterion.scores.find_by(country_id: country.id)
-	end
-
 	def show
 		@answer = Answer.find(params[:id])
 
-		@answer_country_scores = [
-			@answer.criterion.scores.find_by(country_id: @answer.country_1_id),
-			@answer.criterion.scores.find_by(country_id: @answer.country_2_id)
-		]
+		@answer_country_scores = @answer.country_scores
 
 		@highlighted_country_scores = @answer_country_scores.dup
 
 		@comparison_country = get_comparison_country(@answer)
+
 		if @comparison_country.present?
-			@comparison_country_score = get_score_from_country(@answer, @comparison_country)
+			@comparison_country_score = Score.get_country_score(@comparison_country.id, @answer.criterion_id)
 			@highlighted_country_scores << @comparison_country_score
 		end
 
 		@rank_order = @answer.get_rank_order
 		@prompt_word = @answer.get_prompt_word
 
-		@answer_country_scores.sort! {|x, y| x.rank <=> y.rank }
 		@highlighted_country_scores.sort! {|x, y| x.rank <=> y.rank }
-		@ordered_scores = @answer.criterion.scores.includes(:country).sort!{|x, y| x.rank <=> y.rank }
+		@ordered_scores = @answer.criterion.all_scores
 	end
 
 

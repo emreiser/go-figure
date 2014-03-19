@@ -24,4 +24,8 @@ class Criterion < ActiveRecord::Base
 		return valid_countries
 	end
 
+	def all_scores
+		return self.scores.includes(:country).sort!{|x, y| x.rank <=> y.rank }
+	end
+
 end
