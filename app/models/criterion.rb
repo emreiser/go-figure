@@ -3,7 +3,7 @@ class Criterion < ActiveRecord::Base
   has_many :answers
   has_many :scores
 
-  def get_rank_order(criterion)
+  def get_rank_order
 		if criterion.higher_good == true
 			'highest to lowest'
 		else
