@@ -10,17 +10,11 @@ class QuestionsController < ApplicationController
 	def index
 
 		@criterion = Criterion.includes(:category).shuffle.sample
-		@valid_scores = Score.where(criterion_id: @criterion.id).where.not(score: nil).includes(:country).shuffle
-		@valid_countries = []
 
-		@valid_scores.each do |score|
-			if score.country.select == true
-				@valid_countries << score.country
-			end
-		end
+		valid_countries = @criterion.get_valid_countries.shuffle
 
-		@country_1 = @valid_countries.first
-		@country_2 = @valid_countries.last
+		@country_1 = valid_countries.first
+		@country_2 = valid_countries.last
 
 		if @criterion.higher_good == true
 			prompt_word = 'a higher'

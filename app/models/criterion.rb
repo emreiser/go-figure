@@ -11,4 +11,17 @@ class Criterion < ActiveRecord::Base
 		end
 	end
 
+	def get_valid_countries
+		valid_scores = Score.where(criterion_id: self.id).where.not(score: nil).includes(:country)
+		valid_countries = []
+
+		valid_scores.each do |score|
+			if score.country.select == true
+				valid_countries << score.country
+			end
+		end
+
+		return valid_countries
+	end
+
 end
