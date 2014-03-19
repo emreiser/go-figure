@@ -1,7 +1,7 @@
 <div class='main'>
 	<div class='narrow'>
 		<%= render partial: 'flash_feedback' %>
-		<h4>Highest <%= @answer.criterion.display_name %>:</h4>
+		<h4><%= @prompt_word %> <%= @answer.criterion.display_name %>:</h4>
 	</div>
 	<div class='result relative'>
 			<%= link_to ' ', questions_path, class: 'next-arrow' %>
@@ -10,7 +10,7 @@
 			</div>
 	</div>
 		<% if @comparison_country.present? %>
-		<h4 class='gray pad-bottom'>(For comparison, <%= @comparison_country.name %> came in at <%= @comparison_country_score.rank %>.)</h4>
+			<h4 class='gray pad-bottom'>(For comparison, the <%= @comparison_country.name %> came in at <%= @comparison_country_score.rank %>.)</h4>
 		<% end %>
 	<hr>
 	<div class='row margin-top'>

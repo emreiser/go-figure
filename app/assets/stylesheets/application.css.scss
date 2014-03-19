@@ -44,7 +44,7 @@ input {
 }
 
 #page {
-	min-height: 300px;
+	min-height: 350px;
 }
 
 header {
@@ -216,6 +216,10 @@ td:first-child {
 .question {
 	width: 80%;
 	margin: 0 auto;
+}
+
+.question h1 {
+	min-height: 90px;
 }
 
 .btn {

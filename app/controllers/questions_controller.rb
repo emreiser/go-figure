@@ -9,22 +9,12 @@ class QuestionsController < ApplicationController
 
 	def index
 
-		if user_signed_in?
-			@user = current_user
-		end
 		@criterion = Criterion.includes(:category).shuffle.sample
 
-		@valid_scores = Score.where(criterion_id: @criterion.id).where.not(score: nil).includes(:country).shuffle
-		@valid_countries = []
+		valid_countries = @criterion.get_valid_countries.shuffle
 
-		@valid_scores.each do |score|
-			if score.country.select == true
-				@valid_countries << score.country
-			end
-		end
-
-		@country_1 = @valid_countries.first
-		@country_2 = @valid_countries.last
+		@country_1 = valid_countries.first
+		@country_2 = valid_countries.last
 
 		if @criterion.higher_good == true
 			prompt_word = 'a higher'

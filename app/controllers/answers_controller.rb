@@ -6,52 +6,25 @@ class AnswersController < ApplicationController
 
 	def create
 		@answer = Answer.new(answer_params)
-		@answer[:selected_country_id] = Country.find_by(name: params[:commit]).id
+		@answer.selected_country_id = Country.find_by(name: params[:commit]).id
 
-		if @answer[:selected_country_id] == get_correct_country(@answer)
-			@answer[:correct] = true
-		else
-			@answer[:correct] = false
-		end
+		@answer.correct = @answer.assign_correct_answer
 
 		if @answer.save
 			if @answer[:correct] == true
 				flash[:notice] = "That's right."
 			else
 				flash[:warning] = "Go figure."
-				add_bias_points(@answer)
+				BiasPoint.add_bias_points(@answer, current_user)
 			end
 			redirect_to @answer
 		end
 	end
 
-	# Move to model?
-	def get_correct_country(answer)
-		score_country_1 = Score.find_country_score(answer.country_1_id, answer.criterion_id)
-		score_country_2 = Score.find_country_score(answer.country_2_id, answer.criterion_id)
-
-		if score_country_1 > score_country_2
-			answer[:country_1_id]
-		else
-			answer[:country_2_id]
-		end
-	end
-
-	# Move to model?
-	def get_positive_field(answer)
-		if answer[:correct] == false
-			if answer.criterion.higher_good == true
-				false
-			else
-				true
-			end
-		end
-	end
-
-	def set_comparison_country(answer_countries)
+	def get_comparison_country(answer)
 		usa = Country.find_by(name: 'United States')
 
-		if answer_countries.include? usa.name
+		if [answer.country_1_id, answer.country_2_id].include? usa.id
 			''
 		elsif user_signed_in? && current_user.country_id.present?
 			current_user.country
@@ -62,57 +35,29 @@ class AnswersController < ApplicationController
 
 	def show
 		@answer = Answer.find(params[:id])
-		@answer_country_scores = [
-			# @answer.criterion.scores.merge(@answer.country_1.scores)
-			Score.where(criterion_id: @answer.criterion.id).where(country_id: @answer.country_1),
-			Score.where(criterion_id: @answer.criterion.id).where(country_id: @answer.country_2)].flatten!
 
-		@highlighted_country_scores = [
-			Score.where(criterion_id: @answer.criterion.id).where(country_id: @answer.country_1),
-			Score.where(criterion_id: @answer.criterion.id).where(country_id: @answer.country_2)].flatten!
+		@answer_country_scores = @answer.country_scores
 
-		@comparison_country = set_comparison_country([@answer.country_1.name, @answer.country_1.name])
+		@highlighted_country_scores = @answer_country_scores.dup
+
+		@comparison_country = get_comparison_country(@answer)
 
 		if @comparison_country.present?
-			@comparison_country_score = @comparison_country.scores.find_by(criterion_id: @answer.criterion.id)
+			@comparison_country_score = Score.get_country_score(@comparison_country.id, @answer.criterion_id)
 			@highlighted_country_scores << @comparison_country_score
 		end
 
 		@rank_order = @answer.get_rank_order
-		@answer_country_scores.sort! {|x, y| x.rank <=> y.rank }
+		@prompt_word = @answer.get_prompt_word
+
 		@highlighted_country_scores.sort! {|x, y| x.rank <=> y.rank }
-		@ordered_scores = @answer.criterion.scores.includes(:country).sort!{|x, y| x.rank <=> y.rank }
+		@ordered_scores = @answer.criterion.all_scores
 	end
 
 
 	private
 	def answer_params
 		params.require(:answer).permit(:user_id, :country_1_id, :country_2_id, :criterion_id, :selected_country_id, :positive)
-	end
-
-	def add_bias_points(answer)
-
-		#Pull first country from answer and assign positive attribute
-		first_country_point = BiasPoint.new(answer_id: answer.id, country_id: answer.selected_country_id)
-		first_country_point.set_positive_attribute(answer)
-
-		#Pull second country from answer and assign positive attribute
-		second_country_point = BiasPoint.new(answer_id: answer.id)
-		if answer.selected_country_id == answer.country_1_id
-			second_country_point[:country_id] = answer.country_2_id
-		else
-			second_country_point[:country_id] = answer.country_1_id
-		end
-		second_country_point.set_positive_attribute(answer)
-
-		#If user signed in, record user id for answer
-		if user_signed_in?
-			first_country_point[:user_id] = current_user.id
-			second_country_point[:user_id] = current_user.id
-		end
-
-		first_country_point.save!
-		second_country_point.save!
 	end
 
 end
