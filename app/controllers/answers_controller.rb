@@ -44,7 +44,7 @@ class AnswersController < ApplicationController
 			@answer.criterion.scores.find_by(country_id: @answer.country_2_id)
 		]
 
-		@highlighted_country_scores = @answer_country_scores
+		@highlighted_country_scores = @answer_country_scores.dup
 
 		@comparison_country = get_comparison_country(@answer)
 		if @comparison_country.present?
@@ -52,7 +52,14 @@ class AnswersController < ApplicationController
 			@highlighted_country_scores << @comparison_country_score
 		end
 
-		# @rank_order = @answer.get_rank_order
+		@rank_order = @answer.get_rank_order
+
+		if @answer.criterion.higher_good == true
+			@prompt_word = 'Highest'
+		else
+			@prompt_word = 'Lowest'
+		end
+
 		@answer_country_scores.sort! {|x, y| x.rank <=> y.rank }
 		@highlighted_country_scores.sort! {|x, y| x.rank <=> y.rank }
 		@ordered_scores = @answer.criterion.scores.includes(:country).sort!{|x, y| x.rank <=> y.rank }

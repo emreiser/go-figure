@@ -25,7 +25,7 @@ class Answer < ActiveRecord::Base
 		score_country_1 = self.criterion.scores.find_by(country_id: country_1_id)
 		score_country_2 = self.criterion.scores.find_by(country_id: country_2_id)
 
-		if score_country_1.rank > score_country_2.rank
+		if score_country_1.rank < score_country_2.rank
 			self.country_1_id
 		else
 			self.country_2_id
@@ -33,7 +33,7 @@ class Answer < ActiveRecord::Base
 	end
 
 	def assign_correct_answer
-		if self.selected_country == self.correct_country
+		if self.selected_country_id == self.correct_country
 			true
 		else
 			false
