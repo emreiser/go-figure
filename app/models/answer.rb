@@ -50,4 +50,12 @@ class Answer < ActiveRecord::Base
 		end
 	end
 
+	def get_prompt_word
+		if self.criterion.higher_good == true
+			'Highest'
+		else
+			'Lowest'
+		end
+	end
+
 end

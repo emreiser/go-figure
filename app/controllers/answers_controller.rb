@@ -39,6 +39,7 @@ class AnswersController < ApplicationController
 
 	def show
 		@answer = Answer.find(params[:id])
+
 		@answer_country_scores = [
 			@answer.criterion.scores.find_by(country_id: @answer.country_1_id),
 			@answer.criterion.scores.find_by(country_id: @answer.country_2_id)
@@ -53,12 +54,7 @@ class AnswersController < ApplicationController
 		end
 
 		@rank_order = @answer.get_rank_order
-
-		if @answer.criterion.higher_good == true
-			@prompt_word = 'Highest'
-		else
-			@prompt_word = 'Lowest'
-		end
+		@prompt_word = @answer.get_prompt_word
 
 		@answer_country_scores.sort! {|x, y| x.rank <=> y.rank }
 		@highlighted_country_scores.sort! {|x, y| x.rank <=> y.rank }
