@@ -15,7 +15,7 @@ class AnswersController < ApplicationController
 				flash[:notice] = "That's right."
 			else
 				flash[:warning] = "Go figure."
-				add_bias_points(@answer)
+				BiasPoint.add_bias_points(@answer, current_user)
 			end
 			redirect_to @answer
 		end
@@ -65,31 +65,6 @@ class AnswersController < ApplicationController
 	private
 	def answer_params
 		params.require(:answer).permit(:user_id, :country_1_id, :country_2_id, :criterion_id, :selected_country_id, :positive)
-	end
-
-	def add_bias_points(answer)
-
-		#Pull first country from answer and assign positive attribute
-		first_country_point = BiasPoint.new(answer_id: answer.id, country_id: answer.selected_country_id)
-		first_country_point.set_positive_attribute(answer)
-
-		#Pull second country from answer and assign positive attribute
-		second_country_point = BiasPoint.new(answer_id: answer.id)
-		if answer.selected_country_id == answer.country_1_id
-			second_country_point[:country_id] = answer.country_2_id
-		else
-			second_country_point[:country_id] = answer.country_1_id
-		end
-		second_country_point.set_positive_attribute(answer)
-
-		#If user signed in, record user id for answer
-		if user_signed_in?
-			first_country_point[:user_id] = current_user.id
-			second_country_point[:user_id] = current_user.id
-		end
-
-		first_country_point.save!
-		second_country_point.save!
 	end
 
 end
