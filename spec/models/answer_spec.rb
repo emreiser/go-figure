@@ -40,11 +40,11 @@ describe Answer do
 	end
 
 	describe 'get_rank_order' do
-		criterion = Criterion.create(name: '_2010_fixed_and_mobile_telephone_subscribers', display_name: 'ratio of telephone subscribers in 2010', higher_good: true)
-		@answer = Answer.new(criterion_id: 1, country_1_id: 23, country_2_id: 4, selected_country_id: 23)
-		@answer.save
 
 		it "should return a string of 'highest to lowest' if answer criterion higher_good true" do
+			criterion = Criterion.create!(name: '_2010_fixed_and_mobile_telephone_subscribers', display_name: 'ratio of telephone subscribers in 2010', higher_good: true)
+			@answer = Answer.create!(criterion_id: criterion.id, country_1_id: 23, country_2_id: 4, selected_country_id: 23)
+
 			expect(@answer.get_rank_order).to eq 'highest to lowest'
 		end
 	end

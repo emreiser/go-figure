@@ -9,7 +9,7 @@ class Answer < ActiveRecord::Base
 
 	validates :country_1_id, presence: true
 	validates :country_2_id, presence: true
-	validates :selected_country, presence: true
+	validates :selected_country_id, presence: true
 	validates :criterion_id, presence: true
 
 
