@@ -63,12 +63,12 @@ Criterion.create(category: innovation_technologoy, name: '_2005_2010_research_an
 Criterion.create(category: innovation_technologoy, name: '_2002_2011_graduates_in_science_and_engineering', display_name: "percent of graduates in science and engineering in 2002\-2011", higher_good: true, unit: "% of graduates")
 Criterion.create(category: innovation_technologoy, name: '_2010_internet_users', display_name: 'ratio of internet users in 2010', higher_good: true)
 # Environment
-Criterion.create(category: environment, name: '_2009_renewable_energy_usage', display_name: 'renewable energy usage 2009', higher_good: true)
+Criterion.create(category: environment, name: '_2009_renewable_energy_usage', display_name: 'renewable energy usage 2009', higher_good: true, unit: "% of energy supply")
 # Criterion.create(category: environment, name: '_2009_agricultural_land', display_name: 'percent of agricultural land in 2009', higher_good: true)
-Criterion.create(category: environment, name: '_2008_carbon_dioxide_emissions', display_name: 'carbon dioxide emissions in 2008', higher_good: false)
+Criterion.create(category: environment, name: '_2008_carbon_dioxide_emissions', display_name: 'carbon dioxide emissions in 2008', higher_good: false, unit: "Megatonnes")
 # Education
 Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_secondary', display_name: "percent enrollment in secondary school in 2002\-2011", higher_good: true, unit: "%")
-Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_tertiary', display_name: 'percent enrollment in college in 2002-2011', higher_good: true, "%")
+Criterion.create(category: education, name: '_2002_2011_gross_enrollement_ratio_tertiary', display_name: 'percent enrollment in college in 2002-2011', higher_good: true, unit: "%")
 # Health
 Criterion.create(category: health, name: '_2007_2009_satisfaction_with_health_care_quality', display_name: "satisfaction with health care quality in 2007\-2009", higher_good: true, unit: "%")
 # Population
