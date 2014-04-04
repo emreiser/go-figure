@@ -1,6 +1,7 @@
 <div class="panel panel-default">
 	<div class="panel">
 		<h4>Countries ranked from <%= @rank_order %> <%= @answer.criterion.display_name %></h4>
+		<p class='units text-right'> <%= @answer.criterion.unit %> </p>
 	</div>
 	<div class='line_up'>
 			<% @ordered_scores.each do |score| %>
@@ -14,6 +15,7 @@
 					<ul>
 						<li class='short'><%= score.rank %></li>
 						<li><%= score.country.name %></li>
+						<li class='right'><%= score.score %></li>
 					</ul>
 					</div>
 			<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204220715) do
+ActiveRecord::Schema.define(version: 20140404184923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140204220715) do
     t.boolean  "higher_good"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "unit"
   end
 
   add_index "criteria", ["category_id"], name: "index_criteria_on_category_id", using: :btree
