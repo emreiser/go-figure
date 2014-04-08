@@ -232,8 +232,12 @@ td:first-child {
 	padding: 10px 20px;
 }
 
-.line_up {
+.line-up {
 	text-align: left;
+}
+
+.line-up-title {
+	padding-bottom: 5px;
 }
 
 ul, ol {
@@ -246,7 +250,7 @@ ul li {
 	display: inline-block;
 }
 
-.line_up ul li:first-child {
+.line-up ul li:first-child {
 	width: 10%;
 }
 
@@ -260,13 +264,18 @@ ul li {
 	font-size: 90%;
 }
 
+.units {
+	color: gray;
+	font-size: 90%;
+	margin: 15px 0 0 0 ;
+}
+
 .country-name {
 	font-size: 90%;
 }
 
 .button-rank a, .button-rank a:active, .button-rank a:visited {
 	color: white;
-	// font-weight: bold;
 }
 
 .button-rank a:hover {

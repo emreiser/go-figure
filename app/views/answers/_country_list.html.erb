@@ -1,9 +1,9 @@
 <div class="panel panel-default">
-	<div class="panel">
+	<div class="panel line-up-title">
 		<h4>Countries ranked from <%= @rank_order %> <%= @answer.criterion.display_name %></h4>
 		<p class='units text-right'> <%= @answer.criterion.unit %> </p>
 	</div>
-	<div class='line_up'>
+	<div class='line-up'>
 			<% @ordered_scores.each do |score| %>
 				<% if @highlighted_country_scores.include? score %>
 					<div class='panel highlight'>
